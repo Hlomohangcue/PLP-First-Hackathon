@@ -13,8 +13,8 @@ html {
 
 /* --- Header and Navbar Styles (Refactored) --- */
 header.sticky-navbar {
-    background: #fff; /* Set header background to match footer */
-    color: #222; /* Ensure text within header is white */
+    background: #222; /* Set header background to match footer */
+    color: #fff; /* Ensure text within header is white */
     padding: 1rem 0;
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     position: sticky;
@@ -48,7 +48,7 @@ header.sticky-navbar {
     display: none;
     font-size: 2rem;
     cursor: pointer;
-    color: #222; /* Hamburger icon color is now white */
+    color: #fff; /* Hamburger icon color is now white */
     z-index: 1001;
 }
 
