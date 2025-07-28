@@ -7,27 +7,27 @@
     <link rel="stylesheet" href="styles.css">
     </head>
 <body>
-    <header>
-        <nav class="navbar">
-            <div class="logo">Hlomohang</div>
-            <input type="checkbox" id="menu-toggle" class="menu-toggle">
-            <label for="menu-toggle" class="menu-icon">☰</label>
-            <ul class="menu horizontal">
-                <li><a href="home.html">Home</a></li>
-                <li><a href="about.html" class="active">About</a></li>
-                <li><a href="skills.html">Skills</a></li>
-                <li><a href="education.html">Education</a></li>
-                <li><a href="projects.html">Projects</a></li>
-                <li><a href="interests.html">Interests</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
+    <header class="sticky-navbar">
+      <nav class="navbar">
+          <div class="logo"><a href="home.html">Hlomohang</a></div>
+          <input type="checkbox" id="menu-toggle" class="menu-toggle">
+          <label for="menu-toggle" class="menu-icon">☰</label>
+          <ul class="menu horizontal">
+              <li><a href="home.html" class="active">Home</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="skills.html">Skills</a></li>
+              <li><a href="education.html">Education</a></li>
+              <li><a href="projects.html">Projects</a></li>
+              <li><a href="interests.html">Interests</a></li>
+              <li><a href="contact.html">Contact</a></li>
+          </ul>
+      </nav>
     </header>
 
     <main class="about-section">
         <h1>About Me</h1>
         <div class="about-content">
-            <img src="images/profile.jpg" alt="Hlomohang Sethuntsa" class="profile-img">
+            <img src="images/ai_top_achiever_award.mhtml" alt="Hlomohang Sethuntsa" class="ai_top_achiever_award.mhtml">
             <div class="bio">
                 <p>Hi! I’m Hlomohang Sethuntsa, a passionate web developer and IT consultant with a strong foundation in computer systems engineering. I thrive on building functional, elegant web experiences and continually strive to learn and grow in the world of technology.</p>
                 <p>I have certifications in coding, programming, and artificial intelligence from Samsung Innovation Campus and a diploma from Lerotholi Polytechnic. My work blends creativity, logic, and clean code to deliver impactful digital solutions.</p>
@@ -36,7 +36,34 @@
     </main>
 
     <footer>
-        <p>© 2025 Hlomohang Sethuntsa | <a href="https://github.com/hlomohang">GitHub</a> | <a href="https://linkedin.com/in/hlomohang">LinkedIn</a></p>
+        <div class="footer-content">
+            <div class="footer-section footer-about">
+                <h3>Hlomohang Sethuntsa</h3>
+                <p>Dedicated to crafting intuitive digital experiences and building scalable IT solutions. Let's connect!</p>
+            </div>
+            <div class="footer-section footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="about.html">About Me</a></li>
+                    <li><a href="skills.html">My Skills</a></li>
+                    <li><a href="projects.html">My Projects</a></li>
+                    <li><a href="contact.html">Contact Me</a></li>
+                </ul>
+            </div>
+            <div class="footer-section footer-social">
+                <h3>Connect</h3>
+                <div class="social-icons">
+                    <a href="mailto:hlomohangsethuntsa3@gmail.com" target="_blank"><i class="fas fa-envelope"></i></a>
+                    <a href="https://github.com/hlomohang" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://linkedin.com/in/hlomohang" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                <p class="contact-email">Email: <a href="mailto:hlomohangsethuntsa3@gmail.com">hlomohangsethuntsa3@gmail.com</a></p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Hlomohang Sethuntsa. All rights reserved.</p>
+        </div>
     </footer>
+
 </body>
 </html>
