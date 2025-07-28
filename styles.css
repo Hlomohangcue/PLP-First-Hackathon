@@ -13,7 +13,7 @@ html {
 
 /* --- Header and Navbar Styles (Refactored) --- */
 header.sticky-navbar {
-    background: #222; /* Set header background to match footer */
+    background: linear-gradient(to right, #e1b382, #c89666, #2d545e, #12343b ); /* Set header background to match footer */
     color: #fff; /* Ensure text within header is white */
     padding: 1rem 0;
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
@@ -78,7 +78,7 @@ header.sticky-navbar {
 
 /* --- Hero Section Styles (unchanged, just for context) --- */
 .hero-section {
-    background: linear-gradient(to right, #0d1b2a, #1b263b);
+    background: linear-gradient(to right, #0f2862, #9e363a, #091f36, #4f5f76);
     color: #fff;
     padding: 80px 20px;
     display: flex;
@@ -307,7 +307,7 @@ header.sticky-navbar {
 
 /* --- Footer Styles (Already matching) --- */
 footer {
-    background: #222; /* Matches header background */
+    background: linear-gradient(to right,  #0f2862,#9e363a,#091f36,#4f5f76); /* Matches header background */
     color: #fff;
     padding: 40px 20px;
     margin-top: 40px;
@@ -548,14 +548,14 @@ footer {
     padding: 40px 20px;
     max-width: 900px;
     margin: 20px auto;
-    background-color: #fff;
+    background-color: linear-gradient(to right, #0f2862, #9e363a, #091f36, #4f5f76);
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     border-radius: 8px;
     text-align: center;
 }
 
 .education-section h1 {
-    color: #333;
+    color: #fff;
     margin-bottom: 40px;
 }
 
@@ -701,14 +701,14 @@ footer {
     padding: 40px 20px;
     max-width: 1200px;
     margin: 20px auto;
-    background-color: #fff;
+    background-color: linear-gradient(to right, #0f2862, #9e363a, #091f36, #4f5f76);
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     border-radius: 8px;
     text-align: center;
 }
 
 .projects-section h1 {
-    color: #333;
+    color: #fff;
     margin-bottom: 40px;
 }
 
@@ -833,14 +833,14 @@ footer {
     padding: 40px 20px;
     max-width: 1200px;
     margin: 20px auto;
-    background-color: #fff;
+    background-color: linear-gradient(to right, #0f2862, #9e363a, #091f36, #4f5f76);
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     border-radius: 8px;
     text-align: center;
 }
 
 .interests-section h1 {
-    color: #333;
+    color: #fff;
     margin-bottom: 40px;
 }
 
@@ -941,14 +941,14 @@ footer {
     padding: 40px 20px;
     max-width: 1200px;
     margin: 20px auto;
-    background-color: #fff;
+    background-color: linear-gradient(to right, #0f2862, #9e363a, #091f36, #4f5f76);
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     border-radius: 8px;
     text-align: center;
 }
 
 .contact-section h1 {
-    color: #333;
+    color: #fff;
     margin-bottom: 40px;
 }
 
