@@ -1,22 +1,57 @@
 /* --- Global Body & Reset --- */
+:root {
+    /* Define color palette as CSS variables for consistency */
+    --primary-blue: #007bff;
+    --secondary-dark: #333;
+    --light-grey: #f4f4f4;
+    --dark-gradient-start: #12343b; /* Adjusted from your header/footer gradients */
+    --dark-gradient-end: #2d545e;   /* Adjusted from your header/footer gradients */
+    --light-text: #fff;
+    --dark-text: #333;
+    --accent-color: #e1b382; /* From your header gradient, good for highlights */
+    --box-shadow-light: rgba(0,0,0,0.1);
+    --box-shadow-medium: rgba(0,0,0,0.2);
+    --box-shadow-dark: rgba(0,0,0,0.3);
+}
+
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Inter', sans-serif; /* Modern, clean font */
     margin: 0;
     line-height: 1.6;
-    background-color: #f4f4f4;
-    color: #333;
+    background-color: var(--light-grey);
+    color: var(--dark-text);
+    -webkit-font-smoothing: antialiased; /* Smoother font rendering */
+    -moz-osx-font-smoothing: grayscale; /* Smoother font rendering */
 }
 
 html {
     scroll-behavior: smooth;
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+}
+
+/* Universal box-sizing for easier layout calculations */
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+/* Remove default margin/padding for lists and headings for better control */
+ul, ol, h1, h2, h3, h4, h5, h6, p {
+    margin: 0;
+    padding: 0;
+}
+
+/* Base link styles */
+a {
+    text-decoration: none;
+    color: inherit; /* Inherit color from parent by default */
 }
 
 /* --- Header and Navbar Styles (Refactored) --- */
 header.sticky-navbar {
-    background: linear-gradient(to right, #e1b382, #c89666, #2d545e, #12343b ); /* Set header background to match footer */
-    color: #fff; /* Ensure text within header is white */
+    background: linear-gradient(to right, var(--dark-gradient-start), var(--dark-gradient-end));
+    color: var(--light-text);
     padding: 1rem 0;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    box-shadow: 0 2px 5px var(--box-shadow-medium);
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -25,21 +60,86 @@ header.sticky-navbar {
 
 .navbar {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* Pushes logo to one end, menu to the other */
     align-items: center;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
+    position: relative; /* For absolute positioning of menu toggle */
+}
+
+.logo {
+    display: flex; /* Allow logo image and potential text to sit side-by-side */
+    align-items: center;
+    order: 1; /* Ensure it stays on the left visually */
 }
 
 .logo a {
-    font-size: 1.8rem;
+    /* These styles were for text, keep them if you plan to use text beside the image */
+    font-size: 1.8rem; /* Consider if you still need this if it's purely an image */
     font-weight: bold;
-    color: #fff; /* Your name/logo text color is now white */
+    color: var(--light-text);
     text-transform: uppercase;
     text-decoration: none;
+    display: flex; /* Allows image to be aligned with text within the link if present */
+    align-items: center;
 }
 
+/* The actual image styles for the logo */
+.logo-image {
+    width: 50px; /* Adjust logo size as needed */
+    height: 50px;
+    border-radius: 50%; /* Circular view */
+    object-fit: cover; /* Ensures image covers the circle without distortion */
+    display: block;
+    margin-right: 10px; /* Space between logo and any text if present */
+    border: 2px solid var(--accent-color); /* Subtle border for circular logo */
+    transition: transform 0.3s ease-in-out; /* Interactivity */
+}
+
+.logo-image:hover {
+    transform: scale(1.05) rotate(5deg); /* Subtle hover effect */
+}
+
+.menu-toggle {
+    display: none; /* Hidden by default */
+}
+
+.menu-icon {
+    display: none; /* Hidden on desktop */
+    font-size: 2rem;
+    cursor: pointer;
+    color: var(--light-text);
+    z-index: 1001;
+    order: 3; /* Pushes hamburger icon to the right */
+}
+
+.menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    order: 2; /* Main navigation sits in the middle on desktop */
+}
+
+.menu li {
+    margin-left: 20px;
+}
+
+.menu a {
+    color: var(--light-text);
+    text-decoration: none;
+    padding: 8px 15px; /* Slightly more padding for better click area */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Interactivity */
+    border-radius: 4px;
+    font-weight: 500; /* Slightly bolder for readability */
+}
+
+.menu a:hover,
+.menu a.active {
+    background-color: rgba(255, 255, 255, 0.15); /* Lighter hover for contrast */
+    color: var(--accent-color); /* Highlight active/hover with accent color */
+}
 .menu-toggle {
     display: none;
 }
@@ -76,23 +176,25 @@ header.sticky-navbar {
     background-color: #555; /* Hover/active state remains slightly darker */
 }
 
-/* --- Hero Section Styles (unchanged, just for context) --- */
+/* --- Hero Section Styles --- */
 .hero-section {
-    background: linear-gradient(to right, #0f2862, #9e363a, #091f36, #4f5f76);
-    color: #fff;
+    background: linear-gradient(to right, #0f2862, #9e363a, #764ba2, #4f5f76); /* Original gradient */
+    color: var(--light-text);
     padding: 80px 20px;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: calc(100vh - 80px);
+    min-height: calc(100vh - 80px); /* Adjust based on header height */
     text-align: center;
     position: relative;
+    overflow: hidden; /* Ensures no content overflows */
 }
 
 .hero-content {
     max-width: 900px;
     margin: 0 auto;
     z-index: 2;
+    padding: 20px; /* Add some padding for smaller screens */
 }
 
 .hero-photo {
@@ -102,31 +204,35 @@ header.sticky-navbar {
     object-fit: cover;
     border: 5px solid rgba(255,255,255,0.2);
     margin-bottom: 25px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.3);
-    transition: transform 0.3s ease;
+    box-shadow: 0 0 15px var(--box-shadow-dark);
+    transition: transform 0.3s ease-out; /* Smooth transition */
 }
 
 .hero-photo:hover {
-    transform: scale(1.05);
+    transform: scale(1.1); /* More pronounced scale on hover */
+    box-shadow: 0 0 25px rgba(255,255,255,0.5); /* Glowing effect */
 }
 
 .intro-sentence {
     font-size: 1.3rem;
     margin-bottom: 10px;
-    opacity: 0.8;
+    opacity: 0.9; /* Slightly more visible */
+    font-weight: 300; /* Lighter weight for minimalist feel */
 }
 
 .headline {
     font-size: 3.5rem;
     margin-bottom: 20px;
     line-height: 1.2;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    text-shadow: 2px 2px 4px var(--box-shadow-dark);
+    font-weight: 700; /* Stronger headline */
 }
 
 .tagline {
     font-size: 1.5rem;
     margin-bottom: 30px;
-    opacity: 0.9;
+    opacity: 0.95; /* More visible */
+    font-weight: 400;
 }
 
 .cta-buttons {
@@ -134,41 +240,44 @@ header.sticky-navbar {
     justify-content: center;
     gap: 20px;
     margin-top: 30px;
+    flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
 }
 
 .btn {
     display: inline-block;
     padding: 15px 30px;
-    border-radius: 5px;
+    border-radius: 8px; /* Slightly more rounded for modern look */
     text-decoration: none;
-    font-weight: bold;
+    font-weight: 600; /* Bolder text */
     font-size: 1.1rem;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transition: all 0.3s ease; /* All properties transition */
+    box-shadow: 0 4px 10px var(--box-shadow-medium);
+    cursor: pointer; /* Explicit cursor */
 }
 
 .primary-btn {
-    background-color: #007bff;
-    color: white;
-    border: 2px solid #007bff;
+    background-color: var(--primary-blue);
+    color: var(--light-text);
+    border: 2px solid var(--primary-blue);
 }
 
 .primary-btn:hover {
-    background-color: #0056b3;
-    transform: translateY(-3px);
-    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+    background-color: darken(var(--primary-blue), 10%); /* Requires SASS/LESS or manual calc */
+    background-color: #0056b3; /* Fallback/manual */
+    transform: translateY(-5px); /* More pronounced lift */
+    box-shadow: 0 8px 20px var(--box-shadow-dark);
 }
 
 .secondary-btn {
     background-color: transparent;
-    color: #fff;
-    border: 2px solid #fff;
+    color: var(--light-text);
+    border: 2px solid var(--light-text);
 }
 
 .secondary-btn:hover {
-    background-color: rgba(255,255,255,0.1);
-    transform: translateY(-3px);
-    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+    background-color: rgba(255,255,255,0.2); /* Slightly more opaque hover */
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px var(--box-shadow-dark);
 }
 
 /* --- Optional: Existing Home Intro Section --- */
@@ -176,13 +285,13 @@ header.sticky-navbar {
     padding: 40px 20px;
     max-width: 800px;
     margin: 20px auto;
-    background-color: #fff;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    background-color: var(--light-text);
+    box-shadow: 0 2px 5px var(--box-shadow-light);
     border-radius: 8px;
     text-align: center;
 }
 .home-intro-section h1 {
-    color: #333;
+    color: var(--dark-text);
     margin-bottom: 20px;
 }
 
@@ -403,57 +512,71 @@ footer {
 
 /* Skills Section Specific Styles */
 .skills-section {
-    padding: 40px 20px;
-    max-width: 1200px;
-    margin: 20px auto;
-    background-color: #fff;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    border-radius: 8px;
+    padding: 60px 20px;
+    max-width: 900px;
+    margin: 40px auto;
+    background: var(--dark-gradient-start); /* Using dark gradient for consistency */
+    color: var(--light-text); /* Ensure text is white */
+    box-shadow: 0 2px 5px var(--box-shadow-light);
+    border-radius: 12px;
     text-align: center;
 }
 
 .skills-section h1 {
-    color: #333;
-    margin-bottom: 40px;
+    color: var(--dark-text);
+    margin-bottom: 50px; /* More space below heading */
+    font-size: 2.5rem; /* Larger heading */
+    color: var(--light-text);
 }
 
 .skills-grid-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 25px;
+    gap: 30px; /* Increased gap */
     justify-content: center;
     align-items: stretch;
 }
 
 .skill-card {
-    background-color: #f9f9f9;
+    background-color: #fcfcfc; /* Lighter background for card */
     padding: 30px 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 12px var(--box-shadow-light); /* More subtle shadow */
     text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-height: 150px;
+    min-height: 180px; /* Slightly taller cards */
+    border: 1px solid #eee; /* Subtle border */
 }
 
 .skill-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-    background-color: #eaf2f8;
+    transform: translateY(-8px); /* More pronounced lift */
+    box-shadow: 0 10px 25px var(--box-shadow-medium);
+    background-color: var(--primary-blue); /* Primary color on hover */
+    color: var(--light-text); /* Text white on hover */
+}
+
+.skill-card:hover i {
+    color: var(--light-text); /* Icon white on hover */
+}
+
+.skill-card:hover h3 {
+    color: var(--light-text); /* Heading white on hover */
 }
 
 .skill-card i {
-    font-size: 3.5rem;
-    color: #007bff;
+    font-size: 4rem; /* Larger icons */
+    color: var(--primary-blue);
     margin-bottom: 15px;
+    transition: color 0.3s ease; /* Smooth color transition */
 }
 
 .skill-card h3 {
-    font-size: 1.3rem;
-    color: #333;
+    font-size: 1.4rem; /* Larger heading */
+    color: var(--dark-text);
     margin-top: 0;
     margin-bottom: 0;
 }
@@ -470,7 +593,7 @@ footer {
 
 .progress-bar {
     height: 100%;
-    background-color: #28a745;
+    background-color: var(--primary-blue); /* Default to primary blue */
     border-radius: 5px;
     text-align: right;
     color: white;
@@ -479,28 +602,30 @@ footer {
     transition: width 0.8s ease-in-out;
 }
 
-.progress-bar.html { background-color: #e44d26; }
-.progress-bar.css { background-color: #264de4; }
-.progress-bar.js { background-color: #f0db4f; }
+.progress-bar.html { background-color: #e44d26; } /* HTML orange */
+.progress-bar.css { background-color: #264de4; } /* CSS blue */
+.progress-bar.js { background-color: #f0db4f; } /* JS yellow */
 
 /* --- Optional: Styles for Badges --- */
 .badge {
     display: inline-block;
-    padding: 0.3em 0.6em;
-    font-size: 0.8em;
+    padding: 0.4em 0.8em; /* Slightly more padding */
+    font-size: 0.85em; /* Slightly larger font */
     font-weight: bold;
     line-height: 1;
-    color: #fff;
+    color: var(--light-text);
     text-align: center;
     white-space: nowrap;
     vertical-align: baseline;
-    border-radius: 0.25rem;
-    margin-top: 10px;
+    border-radius: 0.35rem; /* Slightly more rounded */
+    margin-top: 15px; /* More space */
+    text-transform: capitalize; /* Cleaner look */
 }
 
 .badge.basic { background-color: #6c757d; }
-.badge.intermediate { background-color: #007bff; }
+.badge.intermediate { background-color: var(--primary-blue); }
 .badge.advanced { background-color: #28a745; }
+
 
 /* --- Media Queries for Skills Grid Layout --- */
 @media (max-width: 992px) {
@@ -542,21 +667,155 @@ footer {
         padding: 20px 10px;
     }
 }
+/* --About Section specific Styles-- */
+.about-section {
+    padding: 60px 20px;
+    max-width: 900px;
+    margin: 40px auto;
+    background: var(--dark-gradient-start); /* Using dark gradient for consistency */
+    color: var(--light-text); /* Ensure text is white */
+    box-shadow: 0 2px 5px var(--box-shadow-light);
+    border-radius: 12px;
+    text-align: center;
+}
+.about-section h1 {
+    color: var(--light-text); /* Heading in white */
+    margin-bottom: 50px;
+    font-size: 2.5rem;
+}
+
+/* Basic styling for the main profile image */
+.profile-image {
+    max-width: 250px; /* Adjust as needed */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 8px; /* Slightly rounded corners */
+    box-shadow: 0 4px 10px var(--box-shadow-light);
+    margin-bottom: 20px; /* Space below image */
+}
+
+/* Styling for the about section overall content layout */
+.about-content {
+    display: flex;
+    flex-direction: column; /* Stack image and bio initially */
+    align-items: center; /* Center items horizontally */
+    gap: 30px; /* Space between image and bio */
+    max-width: 900px; /* Constrain content width */
+    margin: 0 auto; /* Center the content block */
+    padding: 20px; /* Internal padding */
+}
+
+/* For larger screens, align image and bio side-by-side */
+@media (min-width: 768px) {
+    .about-content {
+        flex-direction: row; /* Side-by-side on larger screens */
+        align-items: flex-start; /* Align to the top */
+        text-align: left; /* Align text left */
+    }
+
+    .profile-image {
+        margin-bottom: 0; /* Remove bottom margin when side-by-side */
+        margin-right: 30px; /* Space to the right of the image */
+        flex-shrink: 0; /* Prevent image from shrinking */
+    }
+    .bio {
+        flex-grow: 1; /* Allow bio to take remaining space */
+    }
+}
+
+
+/* Styles for the Media Gallery within Achievements */
+.media-gallery {
+    display: grid; /* Use CSS Grid for flexible media layout */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid columns */
+    gap: 20px; /* Space between media items */
+    margin-top: 25px; /* Space above the gallery */
+    justify-content: center; /* Center items in the grid */
+    align-items: start; /* Align items to the start of their cell */
+}
+
+.media-gallery figure {
+    margin: 0; /* Reset default figure margin */
+    padding: 0;
+    text-align: center; /* Center captions */
+    background-color: #f9f9f9; /* Light background for card effect */
+    border-radius: 8px;
+    box-shadow: 0 2px 8px var(--box-shadow-light);
+    overflow: hidden; /* Ensures rounded corners apply to media */
+    display: flex; /* Make figure a flex container for its content */
+    flex-direction: column; /* Stack image/video above caption */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Interactivity */
+}
+
+.media-gallery figure:hover {
+    transform: translateY(-5px); /* Subtle lift on hover */
+    box-shadow: 0 6px 15px var(--box-shadow-medium);
+}
+
+.media-gallery img,
+.media-gallery video {
+    width: 100%; /* Make images and videos fill their container */
+    height: 200px; /* Consistent height for media items */
+    object-fit: cover; /* Ensures images/videos cover the area without distortion */
+    display: block; /* Remove extra space below images/videos */
+    border-bottom: 1px solid #eee; /* Subtle separator */
+}
+
+.media-gallery figcaption {
+    padding: 15px; /* Padding around the caption */
+    font-size: 0.9rem;
+    color: #555;
+    line-height: 1.4;
+    flex-grow: 1; /* Allow caption to take available height */
+}
+
+/* Media Queries for responsiveness */
+@media (max-width: 768px) {
+    .media-gallery {
+        grid-template-columns: 1fr; /* Stack media items on smaller screens */
+        max-width: 400px; /* Constrain width when stacked */
+        margin-left: auto;
+        margin-right: auto; /* Center the stacked gallery */
+    }
+    .media-gallery img,
+    .media-gallery video {
+        height: 220px; /* Slightly taller on mobile for better visibility */
+    }
+}
+
+@media (max-width: 480px) {
+    .profile-image {
+        max-width: 180px; /* Smaller profile image on very small screens */
+    }
+    .media-gallery img,
+    .media-gallery video {
+        height: 180px; /* Adjust height for very small screens */
+    }
+    .media-gallery figure {
+        border-radius: 6px; /* Slightly less rounded */
+    }
+    .media-gallery figcaption {
+        font-size: 0.85rem;
+        padding: 10px;
+    }
+}
+
 
 /* Education Section Specific Styles */
 .education-section {
-    padding: 40px 20px;
+    padding: 60px 20px;
     max-width: 900px;
-    margin: 20px auto;
-    background-color: linear-gradient(to right, #0f2862, #9e363a, #091f36, #4f5f76);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    border-radius: 8px;
+    margin: 40px auto;
+    background: var(--dark-gradient-start); /* Using dark gradient for consistency */
+    color: var(--light-text); /* Ensure text is white */
+    box-shadow: 0 2px 5px var(--box-shadow-light);
+    border-radius: 12px;
     text-align: center;
 }
 
 .education-section h1 {
-    color: #fff;
-    margin-bottom: 40px;
+    color: var(--light-text); /* Heading in white */
+    margin-bottom: 50px;
+    font-size: 2.5rem;
 }
 
 /* Timeline Container */
@@ -573,7 +832,7 @@ footer {
     top: 0;
     left: 50%;
     width: 4px;
-    background-color: #007bff;
+    background-color: var(--accent-color); /* Use accent for line */
     height: 100%;
     transform: translateX(-50%);
     z-index: 0;
@@ -583,7 +842,7 @@ footer {
 .timeline-item {
     display: flex;
     position: relative;
-    margin-bottom: 40px;
+    margin-bottom: 50px; /* More space between items */
     width: 100%;
     text-align: left;
 }
@@ -595,24 +854,30 @@ footer {
 
 /* Timeline Dot */
 .timeline-dot {
-    width: 20px;
-    height: 20px;
-    background-color: #007bff;
-    border: 3px solid #fff;
+    width: 24px; /* Larger dot */
+    height: 24px;
+    background-color: var(--accent-color); /* Accent color for dot */
+    border: 4px solid var(--light-text); /* Stronger white border */
     border-radius: 50%;
     position: absolute;
     top: 0;
     left: 50%;
     transform: translateX(-50%);
     z-index: 1;
+    transition: all 0.3s ease; /* Interactivity */
+}
+
+.timeline-item:hover .timeline-dot {
+    transform: translateX(-50%) scale(1.2); /* Pop out on hover */
+    background-color: var(--primary-blue); /* Change color on hover */
 }
 
 /* Timeline Content Card */
 .timeline-content {
-    background-color: #f9f9f9;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    background-color: var(--light-text);
+    padding: 25px; /* More padding */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px var(--box-shadow-light);
     flex-grow: 1;
     max-width: calc(50% - 40px);
     margin-left: 20px;
@@ -625,26 +890,26 @@ footer {
 }
 
 .timeline-content:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px var(--box-shadow-medium);
 }
 
 .timeline-content h3 {
-    color: #0d1b2a;
+    color: var(--dark-text);
     margin-top: 0;
     margin-bottom: 10px;
-    font-size: 1.3rem;
+    font-size: 1.4rem; /* Larger heading */
 }
 
 .timeline-content .institution {
-    color: #555;
+    color: var(--secondary-dark); /* Deeper text color */
     font-weight: bold;
     margin-bottom: 5px;
 }
 
 .timeline-content .years {
     color: #777;
-    font-size: 0.9rem;
+    font-size: 0.95rem; /* Slightly larger */
 }
 
 /* --- Media Queries for Responsive Timeline --- */
@@ -698,18 +963,20 @@ footer {
 
 /* Projects Section Specific Styles */
 .projects-section {
-    padding: 40px 20px;
+    padding: 60px 20px;
     max-width: 1200px;
-    margin: 20px auto;
-    background-color: linear-gradient(to right, #0f2862, #9e363a, #091f36, #4f5f76);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    border-radius: 8px;
+    margin: 40px auto;
+    background: var(--dark-gradient-start); /* Using dark gradient */
+    color: var(--light-text); /* Ensure text is white */
+    box-shadow: 0 2px 5px var(--box-shadow-light);
+    border-radius: 12px;
     text-align: center;
 }
 
 .projects-section h1 {
-    color: #fff;
-    margin-bottom: 40px;
+    color: var(--light-text);
+    margin-bottom: 50px;
+    font-size: 2.5rem;
 }
 
 .projects-grid-container {
@@ -721,10 +988,10 @@ footer {
 }
 
 .project-card {
-    background-color: #f9f9f9;
+    background-color: var(--light-text);
     border: 1px solid #eee;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    border-radius: 10px;
+    box-shadow: 0 4px 12px var(--box-shadow-light);
     overflow: hidden;
     text-align: left;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -733,55 +1000,63 @@ footer {
 }
 
 .project-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+    transform: translateY(-10px); /* More pronounced lift */
+    box-shadow: 0 15px 30px var(--box-shadow-medium);
 }
 
 .project-card .project-thumbnail {
     width: 100%;
-    height: 200px;
+    height: 220px; /* Slightly taller thumbnails */
     object-fit: cover;
     border-bottom: 1px solid #eee;
+    filter: brightness(0.9); /* Subtle filter for aesthetics */
+    transition: filter 0.3s ease;
+}
+
+.project-card:hover .project-thumbnail {
+    filter: brightness(1.05); /* Brighter on hover */
 }
 
 .project-card h3 {
-    font-size: 1.4rem;
-    color: #0d1b2a;
-    padding: 15px 20px 5px;
+    font-size: 1.5rem; /* Larger heading */
+    color: var(--dark-text);
+    padding: 18px 20px 8px; /* More top/bottom padding */
     margin: 0;
 }
 
 .project-card .project-description {
     font-size: 1rem;
     color: #555;
-    padding: 0 20px 15px;
+    padding: 0 20px 18px; /* More bottom padding */
     margin: 0;
     flex-grow: 1;
+    line-height: 1.5; /* Better readability */
 }
 
 .project-card .project-links {
     padding: 15px 20px;
     border-top: 1px solid #eee;
-    background-color: #f0f0f0;
+    background-color: #f8f8f8; /* Slightly lighter background */
     display: flex;
     justify-content: space-around;
-    gap: 10px;
+    gap: 15px; /* More gap */
 }
 
 .project-card .project-links a {
     text-decoration: none;
-    color: #007bff;
-    font-weight: bold;
+    color: var(--primary-blue);
+    font-weight: 600; /* Bolder */
     display: flex;
     align-items: center;
     gap: 8px;
-    transition: color 0.3s ease;
+    transition: color 0.3s ease, transform 0.2s ease;
 }
 
 .project-card .project-links a:hover {
-    color: #0056b3;
+    color: darken(var(--primary-blue), 10%); /* Requires SASS/LESS or manual calc */
+    color: #0056b3; /* Fallback/manual */
+    transform: translateY(-2px); /* Slight lift on link hover */
 }
-
 /* --- Media Queries for Projects Grid Layout --- */
 @media (max-width: 992px) {
     .projects-grid-container {
@@ -830,65 +1105,73 @@ footer {
 
 /* Interests Section Specific Styles */
 .interests-section {
-    padding: 40px 20px;
+    padding: 60px 20px;
     max-width: 1200px;
-    margin: 20px auto;
-    background-color: linear-gradient(to right, #0f2862, #9e363a, #091f36, #4f5f76);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    border-radius: 8px;
+    margin: 40px auto;
+    background: var(--dark-gradient-start); /* Using dark gradient */
+    color: var(--light-text);
+    box-shadow: 0 2px 5px var(--box-shadow-light);
+    border-radius: 12px;
     text-align: center;
 }
 
 .interests-section h1 {
-    color: #fff;
-    margin-bottom: 40px;
+    color: var(--light-text);
+    margin-bottom: 50px;
+    font-size: 2.5rem;
 }
 
 .interests-grid-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 25px;
+    gap: 30px;
     justify-content: center;
     align-items: stretch;
 }
 
 .interest-card {
-    background-color: #f9f9f9;
+    background-color: var(--light-text);
     padding: 30px 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    border-radius: 10px;
+    box-shadow: 0 4px 12px var(--box-shadow-light);
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-height: 150px;
+    min-height: 180px; /* Consistent height */
     cursor: pointer;
+    border: 1px solid #eee; /* Subtle border */
 }
 
 .interest-card:hover {
     transform: translateY(-8px) scale(1.03);
-    box-shadow: 0 12px 25px rgba(0,0,0,0.15);
-    background-color: #e6f7ff;
+    box-shadow: 0 12px 25px var(--box-shadow-medium);
+    background-color: var(--accent-color); /* Hover with accent color */
+    color: var(--dark-text); /* Text color change on hover */
 }
 
 .interest-card:hover i {
-    color: #0056b3;
-    transform: rotateY(180deg);
-    transition: transform 0.5s ease;
+    color: var(--light-text); /* Icon color change on hover */
+    transform: rotateY(360deg); /* Full spin on Y-axis for fun */
+    transition: transform 0.7s ease; /* Slower spin */
+}
+
+.interest-card:hover h3 {
+    color: var(--dark-text); /* Heading color change on hover */
 }
 
 .interest-card i {
-    font-size: 3.5rem;
-    color: #007bff;
+    font-size: 4rem;
+    color: var(--primary-blue);
     margin-bottom: 15px;
     transition: color 0.3s ease, transform 0.5s ease;
 }
 
 .interest-card h3 {
-    font-size: 1.3rem;
-    color: #333;
+    font-size: 1.4rem;
+    color: var(--dark-text);
     margin-top: 0;
     margin-bottom: 0;
 }
@@ -938,18 +1221,20 @@ footer {
 
 /* Contact Section Specific Styles */
 .contact-section {
-    padding: 40px 20px;
+    padding: 60px 20px;
     max-width: 1200px;
-    margin: 20px auto;
-    background-color: linear-gradient(to right, #0f2862, #9e363a, #091f36, #4f5f76);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    border-radius: 8px;
+    margin: 40px auto;
+    background: var(--dark-gradient-start); /* Using dark gradient */
+    color: var(--light-text);
+    box-shadow: 0 2px 5px var(--box-shadow-light);
+    border-radius: 12px;
     text-align: center;
 }
 
 .contact-section h1 {
-    color: #fff;
-    margin-bottom: 40px;
+    color: var(--light-text);
+    margin-bottom: 50px;
+    font-size: 2.5rem;
 }
 
 .contact-container {
@@ -963,10 +1248,10 @@ footer {
 
 .contact-form-card,
 .contact-details-card {
-    background-color: #f9f9f9;
+    background-color: var(--light-text);
     padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px var(--box-shadow-light);
     text-align: left;
     display: flex;
     flex-direction: column;
@@ -977,55 +1262,70 @@ footer {
 .contact-form-card h2,
 .contact-details-card h2,
 .contact-details-card h3 {
-    color: #0d1b2a;
+    color: var(--dark-text);
     margin-top: 0;
-    margin-bottom: 20px;
+    margin-bottom: 25px; /* More space */
     text-align: center;
+    font-size: 1.8rem; /* Larger headings */
 }
 
 /* Contact Form Styles */
 .contact-form .form-group {
-    margin-bottom: 15px;
+    margin-bottom: 20px; /* More space */
 }
 
 .contact-form label {
     display: block;
     margin-bottom: 8px;
-    font-weight: bold;
-    color: #333;
+    font-weight: 600; /* Bolder label */
+    color: var(--dark-text);
 }
 
 .contact-form input[type="text"],
 .contact-form input[type="email"],
 .contact-form textarea {
     width: 100%;
-    padding: 12px;
+    padding: 14px; /* More padding */
     border: 1px solid #ddd;
-    border-radius: 4px;
+    border-radius: 6px; /* Slightly more rounded */
     font-size: 1rem;
     box-sizing: border-box;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Interactivity */
+}
+
+.contact-form input[type="text"]:focus,
+.contact-form input[type="email"]:focus,
+.contact-form textarea:focus {
+    border-color: var(--primary-blue); /* Highlight on focus */
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25); /* Subtle glowing effect */
+    outline: none; /* Remove default outline */
 }
 
 .contact-form textarea {
     resize: vertical;
+    min-height: 120px; /* Ensure minimum height */
 }
 
 .send-button {
     display: block;
     width: 100%;
-    padding: 12px 20px;
-    background-color: #007bff;
-    color: white;
+    padding: 15px 20px; /* More padding */
+    background-color: var(--primary-blue);
+    color: var(--light-text);
     border: none;
-    border-radius: 4px;
-    font-size: 1.1rem;
+    border-radius: 6px;
+    font-size: 1.2rem; /* Larger font */
     cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-top: 20px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    margin-top: 25px; /* More space */
+    font-weight: 600;
 }
 
 .send-button:hover {
-    background-color: #0056b3;
+    background-color: darken(var(--primary-blue), 10%); /* Requires SASS/LESS or manual calc */
+    background-color: #0056b3; /* Fallback/manual */
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px var(--box-shadow-medium);
 }
 
 .confirmation-message {
@@ -1040,80 +1340,40 @@ footer {
 }
 
 /* Social Icons */
-.social-icons {
+.social-icon-contact { /* Renamed to avoid conflict with footer .social-icons */
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 25px; /* More space */
     margin-bottom: 30px;
+    flex-wrap: wrap; /* Allow wrapping */
+    
 }
 
-.social-icon {
-    font-size: 2.5rem;
-    color: #007bff;
+.social-icon-contact { /* Renamed */
+    font-size: 2.8rem; /* Larger icons */
+    color: var(--primary-blue);
     transition: color 0.3s ease, transform 0.3s ease;
 }
 
-.social-icon:hover {
-    color: #0056b3;
-    transform: translateY(-5px);
+.social-icon-contact:hover {
+    color: darken(var(--primary-blue), 10%); /* Requires SASS/LESS or manual calc */
+    color: #0056b3; /* Fallback/manual */
+    transform: translateY(-5px) scale(1.1); /* More pronounced effect */
 }
 
 /* Google Map Embed */
 .map-container {
     width: 100%;
-    height: 300px;
+    height: 350px; /* Taller map */
     overflow: hidden;
-    border-radius: 8px;
+    border-radius: 10px;
     border: 1px solid #ddd;
-    margin-top: 20px;
+    margin-top: 25px;
+    box-shadow: 0 4px 10px var(--box-shadow-light);
 }
 
 .map-container iframe {
     width: 100%;
     height: 100%;
     border: 0;
-}
-
-/* --- Media Queries for Contact Section --- */
-@media (max-width: 768px) {
-    .contact-container {
-        grid-template-columns: 1fr;
-        gap: 30px;
-        padding: 0 10px;
-    }
-
-    .contact-form-card,
-    .contact-details-card {
-        padding: 25px;
-    }
-
-    .social-icons {
-        gap: 15px;
-    }
-    .social-icon {
-        font-size: 2rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .contact-section {
-        padding: 20px 10px;
-    }
-    .contact-form-card,
-    .contact-details-card {
-        padding: 20px;
-    }
-    .contact-form h2,
-    .contact-details-card h2,
-    .contact-details-card h3 {
-        font-size: 1.3rem;
-        margin-bottom: 15px;
-    }
-    .send-button {
-        font-size: 1rem;
-        padding: 10px 15px;
-    }
-    .map-container {
-        height: 250px;
-    }
 }
