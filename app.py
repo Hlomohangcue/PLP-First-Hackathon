@@ -1,14 +1,15 @@
 from flask import Flask, render_template, request, jsonify
 import mysql.connector
+import os
 
 app = Flask(__name__)
 
 # Configure your MySQL database connection
 db_config = {
-    'host': 'localhost',
-    'user': 'Hlomohang',
-    'password': 'admin1234',
-    'database': 'portfolio_db'
+    'host': os.environ.get('DB_HOST', 'localhost'),
+    'user': os.environ.get('Hlomohang'),
+    'password': os.environ('admin1234'),
+    'database': os.environ('portfolio_db')
 }
 
 # Route for the homepage
