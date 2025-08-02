@@ -11,14 +11,14 @@
     <header class="sticky-navbar">
       <nav class="navbar">
           <div class="logo">
-            <a href="home.html">
+            <a href="index.html">
                 <img src = "images/logo.png", alt="Hlomohang Sethuntsa Logo", class="logo-image">
             </a>
         </div>
           <input type="checkbox" id="menu-toggle" class="menu-toggle">
           <label for="menu-toggle" class="menu-icon">☰</label>
           <ul class="menu horizontal">
-              <li><a href="home.html" class="active">Home</a></li>
+              <li><a href="index.html" class="active">Home</a></li>
               <li><a href="about.html">About</a></li>
               <li><a href="skills.html">Skills</a></li>
               <li><a href="education.html">Education</a></li>
@@ -80,6 +80,8 @@
             <div class="footer-section footer-about">
                 <h3>Hlomohang Sethuntsa</h3>
                 <p>Dedicated to crafting intuitive digital experiences and building scalable IT solutions. Let's connect!</p>
+                <h4>Download My CV</h4>
+                <a href ="images/cv/hlomohang_sethuntsa.pdf" target="_blank" class="download-cv-link">Download CV</a>
             </div>
             <div class="footer-section footer-links">
                 <h3>Quick Links</h3>
@@ -107,20 +109,57 @@
     </footer>
 
     <script>
-        // Optional: Simple JS to show confirmation message
-        document.getElementById('contactForm').addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent actual form submission for now
+        document.addEventListener('DOMContentLoaded', () => {
+            const contactForm = document.getElementById('contactForm');
+            const responseMessageDiv = document.getElementById('responseMessage');
 
-            // In a real scenario, you'd send data to a backend here (e.g., using fetch API)
-            // For now, we just show the message
-            document.getElementById('confirmationMessage').style.display = 'block';
-            this.reset(); // Clear the form fields
-            
-            // Optionally hide message after a few seconds
-            setTimeout(function() {
-                document.getElementById('confirmationMessage').style.display = 'none';
-            }, 5000); // Hide after 5 seconds
+            contactForm.addEventListener('submit', async function(event) {
+                event.preventDefault(); // Prevent the page from reloading
+
+                // Clear previous messages and hide the message box
+                responseMessageDiv.textContent = '';
+                responseMessageDiv.style.display = 'none';
+
+                const formData = new FormData(contactForm);
+                const data = {};
+                formData.forEach((value, key) => (data[key] = value));
+
+                // The URL of your Python Flask backend
+                const backendUrl = 'http://localhost:5000/api/submit-form';
+
+                try {
+                    const response = await fetch(backendUrl, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(data)
+                    });
+
+                    const result = await response.json();
+
+                    // Display the message from the backend
+                    responseMessageDiv.textContent = result.message;
+                    responseMessageDiv.style.display = 'block';
+
+                    if (response.ok) {
+                        responseMessageDiv.style.color = '#155724'; // Green color for success
+                        responseMessageDiv.style.backgroundColor = '#d4edda'; // Light green background
+                        contactForm.reset(); // Clear the form on successful submission
+                    } else {
+                        responseMessageDiv.style.color = '#721c24'; // Red color for error
+                        responseMessageDiv.style.backgroundColor = '#f8d7da'; // Light red background
+                    }
+
+                } catch (error) {
+                    console.error('Network or fetch error:', error);
+                    responseMessageDiv.textContent = 'Could not connect to the server. Please try again later.';
+                    responseMessageDiv.style.display = 'block';
+                    responseMessageDiv.style.color = '#721c24';
+                    responseMessageDiv.style.backgroundColor = '#f8d7da';
+                }
+            });
         });
-    </script>
+    </script>
 </body>
 </html>
