@@ -1246,32 +1246,49 @@ footer {
     font-size: 2.5rem;
 }
 
+/* Container for the form and details cards to enable side-by-side layout */
 .contact-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 20px 0;
+    display: flex;
+    justify-content: center; /* Centers the cards horizontally */
+    align-items: flex-start; /* Aligns cards to the top, ensuring they look balanced even if they have different heights */
+    gap: 2rem; /* Adds space between the form and the details card */
+    flex-wrap: wrap; /* Allows the cards to stack on top of each other on smaller screens */
+    padding: 2rem; /* Adds some padding around the container */
 }
 
 .contact-form-card,
 .contact-details-card {
-    background-color: var(--light-text);
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px var(--box-shadow-light);
-    text-align: left;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: stretch;
+    background-color: var(--card-background); /* Use the light background variable */
+    border-radius: 12px;
+    box-shadow: 0 4px 15px var(--box-shadow-medium);
+    padding: 2.5rem;
+    flex: 1;
+    min-width: 300px;
+    max-width: 500px;
+    
+    /* Set the default text color for all elements inside the card */
+    color: var(--dark-text); 
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+    .contact-container {
+        flex-direction: column; /* Stacks the cards vertically */
+        align-items: center; /* Centers the cards when they are stacked */
+        padding: 1rem;
+    }
+
+    .contact-form-card,
+    .contact-details-card {
+        width: 100%;
+        max-width: none;
+    }
 }
 
 .contact-form-card h2,
 .contact-details-card h2,
 .contact-details-card h3 {
-    color: var(--dark-text);
+    color: var(--light-text);
     margin-top: 0;
     margin-bottom: 25px; /* More space */
     text-align: center;
@@ -1287,12 +1304,13 @@ footer {
     display: block;
     margin-bottom: 8px;
     font-weight: 600; /* Bolder label */
-    color: var(--dark-text);
+    color: var(--light-text);
 }
 
 .contact-form input[type="text"],
 .contact-form input[type="email"],
 .contact-form textarea {
+    color: var(--dark-text);
     width: 100%;
     padding: 14px; /* More padding */
     border: 1px solid #ddd;
@@ -1355,6 +1373,7 @@ footer {
     gap: 25px; /* More space */
     margin-bottom: 30px;
     flex-wrap: wrap; /* Allow wrapping */
+    color: white;
     
 }
 

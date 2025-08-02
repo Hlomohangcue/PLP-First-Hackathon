@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | Hlomohang Sethuntsa</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header class="sticky-navbar">
+    <nav class="navbar">
+        <div class="logo">
+            <a href="{{ url_for('index') }}">
+                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Hlomohang Sethuntsa Logo" class="logo-image">
+            </a>
+        </div>
+        <input type="checkbox" id="menu-toggle" class="menu-toggle">
+        <label for="menu-toggle" class="menu-icon">☰</label>
+        <ul class="menu horizontal">
+            <li><a href="{{ url_for('index') }}" class="active">Home</a></li>
+            <li><a href="{{ url_for('about') }}">About</a></li>
+            <li><a href="{{ url_for('skills') }}">Skills</a></li>
+            <li><a href="{{ url_for('education') }}">Education</a></li>
+            <li><a href="{{ url_for('projects') }}">Projects</a></li>
+            <li><a href="{{ url_for('interests') }}">Interests</a></li>
+            <li><a href="{{ url_for('contact') }}">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+    <main class="about-section">
+    <h1>About Me</h1>
+
+    <section class="about-intro">
+        <div class="about-content">
+            <img src="{{ url_for('static', filename= 'images/profile.jpg') }}" alt="Hlomohang Sethuntsa Professional Portrait" class="profile-image">
+            <div class="bio">
+                <p>I'm <strong>Hlomohang Sethunts'a</strong>, a dedicated and results-driven professional with a <strong>Diploma in Computer Systems Engineering</strong> from Lerotholi Polytechnic.</p>
+                <p>My passion for technology led me to further specialize in cutting-edge fields, earning certifications in <strong>Coding & Programming with Python</strong> and <strong>Artificial Intelligence</strong> from the Samsung Innovation Campus. I was honored to be recognized as a <strong>Top Achiever in AI</strong>, demonstrating my commitment to mastering complex concepts.</p>
+                <p>Beyond my technical skills, I've honed my leadership abilities as a <strong>class representative</strong>  for both my AI course and Computer Systems Engineering program. Professionally, I bring hands-on experience in both <strong>IT Support</strong> and <strong>Software Development</strong>. I gained valuable insights as an <strong> IT Technician at Global IT Systems</strong> and currently contribute as an <strong>IT Support & Systems Engineer at OnePower Lesotho</strong> .</p>
+                <p>I believe in showcasing the practical application of my skills. Below, you'll find a collection of photos and videos that highlight my projects, experiences, and the journey that has shaped my career in technology.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="achievements">
+        <h2>My Journey & Achievements in Technology</h2>
+
+        <article class="achievement-item">
+            <h3>Recognition as a Top Achiever in AI</h3>
+            <p>One of my proudest moments was being recognized as a <strong>Top Achiever in Artificial Intelligence</strong>  at the Samsung Innovation Campus. This award underscored my dedication and success in a field I'm truly passionate about.</p>
+            <div class="media-gallery">
+                <figure>
+                     <video controls muted playsinline poster="{{ url_for('static', filename='images/communication_bridge_ai.mp4') }}">
+                    <source src="{{ url_for('static', filename='images/communication_bridge_ai.mp4') }}" type="video/mp4">
+                    <source src="{{ url_for('static', filename='images/communication_bridge_ai.mp4') }}" type="video/webm">
+                    Your browser does not support the video tag.
+                </video>
+                    <figcaption>A glimpse into an AI project developed during my Samsung Innovation Campus certification.<br>
+                    A project that bridges communication gaps using AI.
+                    </figcaption>
+                </figure>
+                <figure>
+                    <video controls muted playsinline poster="{{ url_for('static', filename='images/ai_award_video.mp4') }}">
+                    <source src="{{ url_for('static', filename='images/ai_award_video.mp4') }}" type="video/mp4">
+                    <source src="{{ url_for('static', filename='images/ai_award_video.mp4') }}" type="video/webm">
+                    Your browser does not support the video tag.
+                </video>
+                    <figcaption>My AI Top Achiever award from Samsung Innovation Campus.</figcaption>
+                </figure>
+            </div>
+        </article>
+
+        <article class="achievement-item">
+            <h3>Leadership & Academic Milestones</h3>
+            <p>My role as a <strong>Class Representative</strong> for both my AI course and Computer Systems Engineering program allowed me to develop strong leadership and communication skills, complementing my technical expertise.</p>
+            <div class="media-gallery">
+                <figure>
+                    <video controls muted playsinline poster="{{ url_for('static', filename='images/My_strory_at_SIC.mp4') }}">
+                    <source src="{{ url_for('static', filename='images/My_strory_at_SIC.mp4') }}" type="video/mp4">
+                    <source src="{{ url_for('static', filename='images/My_strory_at_SIC.mp4') }}" type="video/webm">
+                    Your browser does not support the video tag.
+                    </video>
+                    <figcaption>Engaging as a Class Representative, fostering a collaborative learning environment.</figcaption>
+                </figure>
+                <figure>
+                    <video controls muted playsinline poster="{{ url_for('static', filename='images/diploma_graduations_video.mp4') }}">
+                    <source src="{{ url_for('static', filename='images/diploma_graduations_video.mp4') }}" type="video/mp4">
+                    <source src="{{ url_for('static', filename='images/diploma_graduations_video.mp4') }}" type="video/webm">
+                    Your browser does not support the video tag.
+                </video>
+                    <figcaption>My Diploma in Computer Systems Engineering.</figcaption>
+                </figure>
+            </div>
+        </article>
+
+        <article class="achievement-item">
+            <h3>Hands-On Industry Experience</h3>
+            <p>My professional journey includes valuable practical experience. I dedicated an internship as an <strong>IT Technician at Global IT Systems</strong>, gaining foundational insights into IT support. Currently, I'm contributing as an <strong>IT Support & Systems Engineer at OnePower Lesotho</strong>, where I apply my skills to real-world challenges in a dynamic environment.</p>
+            <div class="media-gallery">
+                <figure>
+                    <img src="{{ url_for('static', filename='images/IT Technician.jpg') }}" alt="Hlomohang performing IT support tasks at Global IT Systems">
+                    <figcaption>A snapshot from my time as an IT Technician at Global IT Systems.</figcaption>
+                </figure>
+                <figure>
+                    <video controls muted playsinline poster="{{ url_for('static', filename='images/1pwr.mp4') }}">
+                    <source src="{{ url_for('static', filename='images/1pwr.mp4') }}" type="video/mp4">
+                    <source src="{{ url_for('static', filename='images/1pwr.mp4') }}" type="video/webm">
+                    Your browser does not support the video tag.
+                    </video>
+                    <figcaption>Contributing to IT Support and Software Development at OnePower Lesotho.</figcaption>
+                </figure> 
+            </div>
+        </article>
+
+    </section>
+</main>
+
+   <footer>
+    <div class="footer-content">
+        <div class="footer-section footer-about">
+            <h3>Hlomohang Sethuntsa</h3>
+            <p>Dedicated to crafting intuitive digital experiences and building scalable IT solutions. Let's connect!</p>
+            <h4>Download My CV</h4>
+            <a href="{{ url_for('static', filename='images/cv/hlomohang_sethuntsa.pdf') }}" target="_blank" class="download-cv-link">Download CV</a>
+        </div>
+        <div class="footer-section footer-links">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="{{ url_for('about') }}">About Me</a></li>
+                <li><a href="{{ url_for('skills') }}">My Skills</a></li>
+                <li><a href="{{ url_for('projects') }}">My Projects</a></li>
+                <li><a href="{{ url_for('contact') }}">Contact Me</a></li>
+            </ul>
+        </div>
+        <div class="footer-section footer-social">
+            <h3>Connect</h3>
+            <div class="social-icon-contact">
+                <a href="mailto:hlomohangsethuntsa3@gmail.com" target="_blank"><i class="fas fa-envelope"></i></a>
+                <a href="https://github.com/HlomohangCue" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/hlomohang-sethunts-a-876401251/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://www.instagram.com/hlomohangcue?igsh=dTUycXlhajRkbDFs" class="social-icon" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
+            <p class="contact-email">Email: <a href="mailto:hlomohangsethuntsa3@gmail.com">hlomohangsethuntsa3@gmail.com</a></p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2025 Hlomohang Sethuntsa. All rights reserved.</p>
+    </div>
+</footer>
+</body>
+</html>

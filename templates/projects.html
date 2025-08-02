@@ -3,31 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projects | Hlomohang Sethuntsa</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Home | Hlomohang Sethuntsa</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <header class="sticky-navbar">
-      <nav class="navbar">
-          <div class="logo">
-            <a href="index.html">
-                <img src = "images/logo.png", alt="Hlomohang Sethuntsa Logo", class="logo-image">
+    <nav class="navbar">
+        <div class="logo">
+            <a href="{{ url_for('index') }}">
+                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Hlomohang Sethuntsa Logo" class="logo-image">
             </a>
         </div>
-          <input type="checkbox" id="menu-toggle" class="menu-toggle">
-          <label for="menu-toggle" class="menu-icon">☰</label>
-          <ul class="menu horizontal">
-              <li><a href="index.html" class="active">Home</a></li>
-              <li><a href="about.html">About</a></li>
-              <li><a href="skills.html">Skills</a></li>
-              <li><a href="education.html">Education</a></li>
-              <li><a href="projects.html">Projects</a></li>
-              <li><a href="interests.html">Interests</a></li>
-              <li><a href="contact.html">Contact</a></li>
-          </ul>
-      </nav>
-    </header>
+        <input type="checkbox" id="menu-toggle" class="menu-toggle">
+        <label for="menu-toggle" class="menu-icon">☰</label>
+        <ul class="menu horizontal">
+            <li><a href="{{ url_for('index') }}" class="active">Home</a></li>
+            <li><a href="{{ url_for('about') }}">About</a></li>
+            <li><a href="{{ url_for('skills') }}">Skills</a></li>
+            <li><a href="{{ url_for('education') }}">Education</a></li>
+            <li><a href="{{ url_for('projects') }}">Projects</a></li>
+            <li><a href="{{ url_for('interests') }}">Interests</a></li>
+            <li><a href="{{ url_for('contact') }}">Contact</a></li>
+        </ul>
+    </nav>
+</header>
 
     <main class="projects-section">
         <h1>My Projects</h1>
@@ -74,37 +74,36 @@
     </main>
 
     <footer>
-        <div class="footer-content">
-            <div class="footer-section footer-about">
-                <h3>Hlomohang Sethuntsa</h3>
-                <p>Dedicated to crafting intuitive digital experiences and building scalable IT solutions. Let's connect!</p>
-
-                <h4>Download My CV</h4>
-                <a href ="images/cv/hlomohang_sethuntsa.pdf" target="_blank" class="download-cv-link">Download CV</a>
-            </div>
-            <div class="footer-section footer-links">
-                <h3>Quick Links</h3>
-                <ul>
-                    <li><a href="about.html">About Me</a></li>
-                    <li><a href="skills.html">My Skills</a></li>
-                    <li><a href="projects.html">My Projects</a></li>
-                    <li><a href="contact.html">Contact Me</a></li>
-                </ul>
-            </div>
-            <div class="footer-section footer-social">
-                <h3>Connect</h3>
-                <div class="social-icon-contact">
-                    <a href="mailto:hlomohangsethuntsa3@gmail.com" target="_blank"><i class="fas fa-envelope"></i></a>
-                    <a href="https://github.com/Hlomohangcue" target="_blank"><i class="fab fa-github"></i></a>
-                    <a href="https://www.linkedin.com/in/hlomohang-sethunts-a-876401251/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://www.instagram.com/hlomohangcue?igsh=dTUycXlhajRkbDFs" class="social-icon" target="_blank"><i class="fab fa-instagram"></i></a>
-                    </div>
-                <p class="contact-email">Email: <a href="mailto:hlomohangsethuntsa3@gmail.com">hlomohangsethuntsa3@gmail.com</a></p>
-            </div>
+    <div class="footer-content">
+        <div class="footer-section footer-about">
+            <h3>Hlomohang Sethuntsa</h3>
+            <p>Dedicated to crafting intuitive digital experiences and building scalable IT solutions. Let's connect!</p>
+            <h4>Download My CV</h4>
+            <a href="{{ url_for('static', filename='images/cv/hlomohang_sethuntsa.pdf') }}" target="_blank" class="download-cv-link">Download CV</a>
         </div>
-        <div class="footer-bottom">
-            <p>© 2025 Hlomohang Sethuntsa. All rights reserved.</p>
+        <div class="footer-section footer-links">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="{{ url_for('about') }}">About Me</a></li>
+                <li><a href="{{ url_for('skills') }}">My Skills</a></li>
+                <li><a href="{{ url_for('projects') }}">My Projects</a></li>
+                <li><a href="{{ url_for('contact') }}">Contact Me</a></li>
+            </ul>
         </div>
-    </footer>
+        <div class="footer-section footer-social">
+            <h3>Connect</h3>
+            <div class="social-icon-contact">
+                <a href="mailto:hlomohangsethuntsa3@gmail.com" target="_blank"><i class="fas fa-envelope"></i></a>
+                <a href="https://github.com/HlomohangCue" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/hlomohang-sethunts-a-876401251/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://www.instagram.com/hlomohangcue?igsh=dTUycXlhajRkbDFs" class="social-icon" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
+            <p class="contact-email">Email: <a href="mailto:hlomohangsethuntsa3@gmail.com">hlomohangsethuntsa3@gmail.com</a></p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2025 Hlomohang Sethuntsa. All rights reserved.</p>
+    </div>
+</footer>
 </body>
 </html>

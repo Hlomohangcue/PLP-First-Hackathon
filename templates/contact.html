@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | Hlomohang Sethuntsa</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header class="sticky-navbar">
+    <nav class="navbar">
+        <div class="logo">
+            <a href="{{ url_for('index') }}">
+                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Hlomohang Sethuntsa Logo" class="logo-image">
+            </a>
+        </div>
+        <input type="checkbox" id="menu-toggle" class="menu-toggle">
+        <label for="menu-toggle" class="menu-icon">☰</label>
+        <ul class="menu horizontal">
+            <li><a href="{{ url_for('index') }}" class="active">Home</a></li>
+            <li><a href="{{ url_for('about') }}">About</a></li>
+            <li><a href="{{ url_for('skills') }}">Skills</a></li>
+            <li><a href="{{ url_for('education') }}">Education</a></li>
+            <li><a href="{{ url_for('projects') }}">Projects</a></li>
+            <li><a href="{{ url_for('interests') }}">Interests</a></li>
+            <li><a href="{{ url_for('contact') }}">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+    <main class="contact-section">
+        <h1>Get In Touch</h1>
+
+        <div class="contact-container">
+            <div class="contact-form-card">
+                <h2>Send Me a Message</h2>
+                <form action="#" method="POST" class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message:</label>
+                        <textarea id="message" name="message" rows="6" required></textarea>
+                    </div>
+                    <button type="submit" class="send-button">Send Message</button>
+                </form>
+                <div id="confirmationMessage" class="confirmation-message" style="display: none;">
+                    Thank you for your message! I'll get back to you soon.
+                </div>
+            </div>
+
+            <div class="contact-details-card">
+                <h2>Connect With Me</h2>
+                <div class="social-icon-contact">
+                    <a href="mailto:hlomohangsethuntsa3@gmail.com" class="social-icon" target="_blank"><i class="fas fa-envelope"></i></a>
+                    <a href="https://www.linkedin.com/in/hlomohang-sethunts-a-876401251/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="social-icon" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://www.instagram.com/hlomohangcue?igsh=dTUycXlhajRkbDFs" class="social-icon" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/26662274073" class="social-icon" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                </div>
+
+                <h3>Find Me on the Map</h3>
+                <div class="map-container">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1525.2638891632766!2d27.70783177721865!3d-29.43577317789472!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1eb6f6580f557371%3A0xc3f1f77d34551174!2sNational%20University%20of%20Lesotho!5e0!3m2!1sen!2sls!4v1700000000000!5m2!1sen!2sls"
+                        width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+    <div class="footer-content">
+        <div class="footer-section footer-about">
+            <h3>Hlomohang Sethuntsa</h3>
+            <p>Dedicated to crafting intuitive digital experiences and building scalable IT solutions. Let's connect!</p>
+            <h4>Download My CV</h4>
+            <a href="{{ url_for('static', filename='images/cv/hlomohang_sethuntsa.pdf') }}" target="_blank" class="download-cv-link">Download CV</a>
+        </div>
+        <div class="footer-section footer-links">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="{{ url_for('about') }}">About Me</a></li>
+                <li><a href="{{ url_for('skills') }}">My Skills</a></li>
+                <li><a href="{{ url_for('projects') }}">My Projects</a></li>
+                <li><a href="{{ url_for('contact') }}">Contact Me</a></li>
+            </ul>
+        </div>
+        <div class="footer-section footer-social">
+            <h3>Connect</h3>
+            <div class="social-icon-contact">
+                <a href="mailto:hlomohangsethuntsa3@gmail.com" target="_blank"><i class="fas fa-envelope"></i></a>
+                <a href="https://github.com/HlomohangCue" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/hlomohang-sethunts-a-876401251/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://www.instagram.com/hlomohangcue?igsh=dTUycXlhajRkbDFs" class="social-icon" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
+            <p class="contact-email">Email: <a href="mailto:hlomohangsethuntsa3@gmail.com">hlomohangsethuntsa3@gmail.com</a></p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2025 Hlomohang Sethuntsa. All rights reserved.</p>
+    </div>
+</footer>
+
+     <script>
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            // Prevent the form from submitting in the traditional way
+            event.preventDefault(); 
+
+            // Get form data and confirmation message div
+            const form = event.target;
+            const formData = new FormData(form);
+            const confirmationMessage = document.getElementById('confirmationMessage');
+
+            // Show a loading state or disable the button to prevent multiple submissions
+            const sendButton = document.querySelector('.send-button');
+            sendButton.disabled = true;
+            sendButton.textContent = 'Sending...';
+
+            // Send form data to the Flask backend
+            fetch('/submit_form', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok.');
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.message) {
+                    // On success, hide the form and show the confirmation message
+                    form.style.display = 'none';
+                    confirmationMessage.style.display = 'block';
+                } else {
+                    // Handle server-side errors
+                    alert(data.error || 'An unknown error occurred.');
+                    sendButton.disabled = false;
+                    sendButton.textContent = 'Send Message';
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred. Please try again.');
+                sendButton.disabled = false;
+                sendButton.textContent = 'Send Message';
+            });
+        });
+    </script>
+</body>
+</html>
