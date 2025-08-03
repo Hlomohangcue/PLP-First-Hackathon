@@ -46,19 +46,15 @@
 
     <section class="achievements">
         <h2>My Journey & Achievements in Technology</h2>
-
+                
         <article class="achievement-item">
             <h3>Recognition as a Top Achiever in AI</h3>
             <p>One of my proudest moments was being recognized as a <strong>Top Achiever in Artificial Intelligence</strong>  at the Samsung Innovation Campus. This award underscored my dedication and success in a field I'm truly passionate about.</p>
             <div class="media-gallery">
                 <figure>
-                     <video controls muted playsinline poster="{{ url_for('static', filename='images/communication_bridge_ai.mp4') }}">
-                    <source src="{{ url_for('static', filename='images/communication_bridge_ai.mp4') }}" type="video/mp4">
-                    <source src="{{ url_for('static', filename='images/communication_bridge_ai.mp4') }}" type="video/webm">
-                    Your browser does not support the video tag.
-                </video>
-                    <figcaption>A glimpse into an AI project developed during my Samsung Innovation Campus certification.<br>
-                    A project that bridges communication gaps using AI.
+                    <img src="{{ url_for('static', filename= 'images/com.jpeg') }}" alt="Communication Bridge AI Thumbnail" class="project-thumbnail">
+                    <figcaption> 
+                    Presenting the Communication Bridge AI, which bridges gaps between verbal and non-verbal communication, to a panel of industry experts.
                     </figcaption>
                 </figure>
                 <figure>
@@ -67,7 +63,7 @@
                     <source src="{{ url_for('static', filename='images/ai_award_video.mp4') }}" type="video/webm">
                     Your browser does not support the video tag.
                 </video>
-                    <figcaption>My AI Top Achiever award from Samsung Innovation Campus.</figcaption>
+                    <figcaption>AI Certification graduation day and Top Achiever award from the Samsung Innovation Campus.Happy to receive the award as I was also the class representative.</figcaption>
                 </figure>
             </div>
         </article>
@@ -85,12 +81,12 @@
                     <figcaption>Engaging as a Class Representative, fostering a collaborative learning environment.</figcaption>
                 </figure>
                 <figure>
-                    <video controls muted playsinline poster="{{ url_for('static', filename='images/diploma_graduations_video.mp4') }}">
-                    <source src="{{ url_for('static', filename='images/diploma_graduations_video.mp4') }}" type="video/mp4">
-                    <source src="{{ url_for('static', filename='images/diploma_graduations_video.mp4') }}" type="video/webm">
+                    <video controls muted playsinline poster="{{ url_for('static', filename='images/my_graduations.mp4') }}">
+                    <source src="{{ url_for('static', filename='images/my_graduations.mp4') }}" type="video/mp4">
+                    <source src="{{ url_for('static', filename='images/my_graduations.mp4') }}" type="video/webm">
                     Your browser does not support the video tag.
                 </video>
-                    <figcaption>My Diploma in Computer Systems Engineering.</figcaption>
+                    <figcaption>My graduation collections from Diploma in Computer Systems Engineering, Coding & Programming and AI.</figcaption>
                 </figure>
             </div>
         </article>
@@ -123,7 +119,7 @@
             <h3>Hlomohang Sethuntsa</h3>
             <p>Dedicated to crafting intuitive digital experiences and building scalable IT solutions. Let's connect!</p>
             <h4>Download My CV</h4>
-            <a href="{{ url_for('static', filename='images/cv/hlomohang_sethuntsa.pdf') }}" target="_blank" class="download-cv-link">Download CV</a>
+            <a href="{{ url_for('static', filename='images/cv/Hlomohang_Sethuntsa_cv.pdf') }}" target="_blank" class="download-cv-link">Download CV</a>
         </div>
         <div class="footer-section footer-links">
             <h3>Quick Links</h3>

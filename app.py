@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify
+'''from flask import Flask, render_template, request, jsonify
 import mysql.connector
 import os
 
@@ -79,4 +79,4 @@ def submit_form():
         return jsonify({'error': f"An unexpected error occurred: {e}"}), 500
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True)'''

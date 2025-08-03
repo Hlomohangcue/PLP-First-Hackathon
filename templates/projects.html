@@ -53,7 +53,11 @@
             </div>
 
             <div class="project-card">
-                <img src="images/project-ai.jpg" alt="Communication Bridge AI Thumbnail" class="project-thumbnail">
+                 <video controls muted playsinline poster="{{ url_for('static', filename='images/communication_bridge_ai.mp4') }}">
+                    <source src="{{ url_for('static', filename='images/communication_bridge_ai.mp4') }}" type="video/mp4">
+                    <source src="{{ url_for('static', filename='images/communication_bridge_ai.mp4') }}" type="video/webm">
+                    Your browser does not support the video tag.
+                </video>
                 <h3>Real-Time Communication Bridge AI</h3>
                 <p class="project-description">Built an AI-powered application to bridge communication gaps between verbal and non-verbal communities using gesture recognition and computer vision. This was my final AI project for the Artificial Intelligence certification at Samsung Innovation Campus.</p>
                 <div class="project-links">
@@ -62,9 +66,13 @@
             </div>
 
             <div class="project-card">
-                <img src="images/project-fleet.jpg" alt="Fleet Inspection System Thumbnail" class="project-thumbnail">
-                <h3>Intelligent Fleet Inspection System</h3>
-                <p class="project-description">Developed a desktop system using Python and the Flet framework to enhance fleet inspection processes at OnePower Lesotho. This system streamlines data collection and management for vehicle fleets.</p>
+                <video controls muted playsinline poster="{{ url_for('static', filename='images/fleet_inspection.mp4') }}">
+                    <source src="{{ url_for('static', filename='images/fleet_inspection.mp4') }}" type="video/mp4">
+                    <source src="{{ url_for('static', filename='images/fleet_inspection.mp4') }}" type="video/webm">
+                    Your browser does not support the video tag.
+                </video>
+                <h3>Fleet Inspection System</h3>
+                <p class="project-description">Developed responsive application using Python and the Flet framework to enhance fleet inspection processes at OnePower Lesotho. This system streamlines data collection and management for vehicle fleets.</p>
                 <div class="project-links">
                     <a href="https://github.com/Hlomohangcue/1pwr_intelligent_fleet_inspection_syatem" target="_blank" class="github-link"><i class="fab fa-github"></i> GitHub</a>
                     </div>
@@ -79,7 +87,7 @@
             <h3>Hlomohang Sethuntsa</h3>
             <p>Dedicated to crafting intuitive digital experiences and building scalable IT solutions. Let's connect!</p>
             <h4>Download My CV</h4>
-            <a href="{{ url_for('static', filename='images/cv/hlomohang_sethuntsa.pdf') }}" target="_blank" class="download-cv-link">Download CV</a>
+            <a href="{{ url_for('static', filename='images/cv/Hlomohang_Sethuntsa_cv.pdf') }}" target="_blank" class="download-cv-link">Download CV</a>
         </div>
         <div class="footer-section footer-links">
             <h3>Quick Links</h3>
