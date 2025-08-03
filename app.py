@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 # Configure your MySQL database connection
 db_config = {
-    'host': os.environ.get('DB_HOST', 'localhost'),
+    'host': os.environ.get('DB_HOST'),
     'user': os.environ.get('Hlomohang'),
     'password': os.environ('admin1234'),
     'database': os.environ('portfolio_db')
