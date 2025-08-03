@@ -1,65 +1,72 @@
-# PLP-First-Hackathon
-my personal portfolio website
- 1. Requirements (What I must include)
-My personal portfolio website should have the following core sections and features:
+# My Personal Portfolio Website
 
-📌 Content Requirements:
-Programming Languages: List the languages you're skilled in (e.g., Python, JavaScript, etc.).
+This is a personal portfolio website developed as part of the **PLP Software Engineering Hackathon**. The website showcases my background, skills, projects, and interests, and provides a way for visitors to get in touch with me.
 
-About Section: A short paragraph about who you are, your passion, and motivations.
+The site is built as a static website using only **HTML5** and **CSS3**, following the core requirements of the hackathon. It is deployed and hosted on **Vercel**.
 
-Education Section: List your academic background and provide a Download CV button.
+## Project Details
 
-Interests: Describe your tech interests (e.g., web development, data science).
+### Requirements
+The primary goal of this hackathon was to build a personal portfolio website that includes the following sections:
+- **Background / About Me**: A brief introduction to myself and my professional journey.
+- **Skills**: A list of my technical and soft skills.
+- **Interests**: Hobbies and areas of personal interest.
+- **Projects**: A showcase of key projects I have worked on, including details and links.
+- **Contact**: A way for visitors to contact me.
 
-Projects Section:
+The project was required to be developed using only **HTML** and **CSS** and deployed on **Vercel**.
 
-At least 2–4 projects
+### Key Features
+- **Clean and Responsive Design**: The website is designed to be easily accessible and visually appealing on various devices, from desktops to mobile phones.
+- **Static Website**: The entire site is built using static HTML and CSS files, ensuring fast load times and a simple, efficient architecture.
+- **Project Showcase**: The projects section includes detailed descriptions, images, and video media to provide a comprehensive view of my work.
+- **WhatsApp Contact Link**: The contact form has been updated to use a direct WhatsApp link, providing a simple and immediate way for visitors to connect with me. This approach was implemented to meet the hackathon's constraints and deployment requirements.
 
-Each with a title, description, and link (GitHub or live demo)
+### Technologies Used
+- **HTML5**: Used for structuring the content of the website.
+- **CSS3**: Used for styling and creating the visual layout.
+- **Vercel**: The platform used for deploying and hosting the static website.
+- **Font Awesome**: Used for social media icons and other visual elements.
 
-Contact Form:
+## Project Structure
 
-Fields: Name, Email, Message
+The project follows a clean and logical file structure:
 
-Submit button (no backend needed if just for design)
+/
+├── templates/
+│   ├── index.html
+│   ├── about.html
+│   ├── skills.html
+│   ├── education.html
+│   ├── projects.html
+│   ├── interests.html
+│   ├── contact.html
+│   └── ... (other HTML pages)
+├── static/
+│   ├── images/
+│   │   └── ... (all image and video files)
+│   ├── styles.css
+│   └── ... (other static assets)
+└── vercel.json
 
-🛠 Technical Requirements:
-Use only HTML & CSS (No frameworks or JavaScript unless later requested)
 
-Responsive design (mobile-friendly layout preferred)
+- **`templates/`**: This directory contains all the main HTML pages of the website.
+- **`static/`**: This directory holds all the static assets, including images, videos, and the primary stylesheet (`styles.css`).
+- **`vercel.json`**: This file configures Vercel to correctly route all requests to the static files within the `templates` and `static` directories, ensuring the website is served properly.
 
-Structured, readable, and commented code
+## Deployment
 
-🎨 2. Design Guidelines (How it should look and feel)
-Section	Design Recommendations
-Header	Navigation bar with links to each section (About, Projects, Contact, etc.)
-Hero Section	Name, title (e.g., Web Developer), and a short tagline
-About	Profile picture, short paragraph, neatly styled
-Skills	Grid or card layout showing icons or language names
-Education	Timeline or bullet list with degree, school, and dates
-Projects	Cards or boxes with hover effects; include links and screenshots
-Interests	Fun and clean layout – could be icons with text
-Contact Form	Simple, centered form with padding and labels
-Footer	Your name, copyright, and maybe social media
+The website is deployed and hosted on Vercel. The deployment process is configured to build and serve the static files without a backend server, adhering to the project's requirements.
 
-🖼 You can design this using Figma, Pen & Paper, or start directly with HTML/CSS.
+The `vercel.json` file handles the routing for all the HTML and static assets, allowing the website to function seamlessly on the Vercel platform.
 
-📋 3. Task Plan (Step-by-step development process)
-Step	Task
-1	Set up the folder structure (index.html, styles.css, /images, /cv)
-2	Create the HTML skeleton with sections and dummy content
-3	Style global elements: fonts, colors, spacing using styles.css
-4	Build each section one at a time:
-→ About
-→ Skills
-→ Education
-→ Projects
-→ Interests
-→ Contact
-5	Add downloadable CV button (<a href="cv/yourname.pdf" download>)
-6	Add internal navigation with anchor links
-7	Make it responsive with media queries
-8	Review and improve design/consistency
-9	Final test: Check layout on mobile, all links working
-10	Optional: Host it for free (e.g., GitHub Pages or Netlify)
+## How to Run Locally
+
+If you wish to run this project locally, you can simply open the `index.html` file in your web browser. Due to the project being a static website, no web server is required.
+
+1.  Clone the repository.
+2.  Navigate to the `templates` folder.
+3.  Open `index.html` in your favorite web browser.
+
+---
+**Author**: Hlomohang Sethuntsa

@@ -5,8 +5,12 @@
       "destination": "/templates/index.html"
     },
     {
-      "source": "/(.*)",
-      "destination": "/templates/$1"
+      "source": "/(.*)\\.html",
+      "destination": "/templates/$1.html"
+    },
+    {
+      "source": "/static/(.*)",
+      "destination": "/static/$1"
     }
   ]
 }

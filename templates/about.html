@@ -4,27 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home | Hlomohang Sethuntsa</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="../static/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <header class="sticky-navbar">
     <nav class="navbar">
         <div class="logo">
-            <a href="{{ url_for('index') }}">
-                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Hlomohang Sethuntsa Logo" class="logo-image">
+            <a href="index.html">
+                <img src="../static/images/logo.png" alt="Hlomohang Sethuntsa Logo" class="logo-image">
             </a>
         </div>
         <input type="checkbox" id="menu-toggle" class="menu-toggle">
         <label for="menu-toggle" class="menu-icon">☰</label>
         <ul class="menu horizontal">
-            <li><a href="{{ url_for('index') }}" class="active">Home</a></li>
-            <li><a href="{{ url_for('about') }}">About</a></li>
-            <li><a href="{{ url_for('skills') }}">Skills</a></li>
-            <li><a href="{{ url_for('education') }}">Education</a></li>
-            <li><a href="{{ url_for('projects') }}">Projects</a></li>
-            <li><a href="{{ url_for('interests') }}">Interests</a></li>
-            <li><a href="{{ url_for('contact') }}">Contact</a></li>
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="skills.html">Skills</a></li>
+            <li><a href="education.html">Education</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="interests.html">Interests</a></li>
+            <li><a href="contact.html">Contact</a></li>
         </ul>
     </nav>
 </header>
@@ -34,7 +34,7 @@
 
     <section class="about-intro">
         <div class="about-content">
-            <img src="{{ url_for('static', filename= 'images/profile.jpg') }}" alt="Hlomohang Sethuntsa Professional Portrait" class="profile-image">
+            <img src="../static/images/profile.jpg" alt="Hlomohang Sethuntsa Professional Portrait" class="profile-image">
             <div class="bio">
                 <p>I'm <strong>Hlomohang Sethunts'a</strong>, a dedicated and results-driven professional with a <strong>Diploma in Computer Systems Engineering</strong> from Lerotholi Polytechnic.</p>
                 <p>My passion for technology led me to further specialize in cutting-edge fields, earning certifications in <strong>Coding & Programming with Python</strong> and <strong>Artificial Intelligence</strong> from the Samsung Innovation Campus. I was honored to be recognized as a <strong>Top Achiever in AI</strong>, demonstrating my commitment to mastering complex concepts.</p>
@@ -52,17 +52,17 @@
             <p>One of my proudest moments was being recognized as a <strong>Top Achiever in Artificial Intelligence</strong>  at the Samsung Innovation Campus. This award underscored my dedication and success in a field I'm truly passionate about.</p>
             <div class="media-gallery">
                 <figure>
-                    <img src="{{ url_for('static', filename= 'images/com.jpeg') }}" alt="Communication Bridge AI Thumbnail" class="project-thumbnail">
+                    <img src="../static/images/com.jpeg" alt="Communication Bridge AI Thumbnail" class="project-thumbnail">
                     <figcaption> 
                     Presenting the Communication Bridge AI, which bridges gaps between verbal and non-verbal communication, to a panel of industry experts.
                     </figcaption>
                 </figure>
                 <figure>
-                    <video controls muted playsinline poster="{{ url_for('static', filename='images/ai_award_video.mp4') }}">
-                    <source src="{{ url_for('static', filename='images/ai_award_video.mp4') }}" type="video/mp4">
-                    <source src="{{ url_for('static', filename='images/ai_award_video.mp4') }}" type="video/webm">
-                    Your browser does not support the video tag.
-                </video>
+                    <video controls muted playsinline poster="../static/images/ai_award_video.mp4">
+                        <source src="../static/images/ai_award_video.mp4" type="video/mp4">
+                        <source src="../static/images/ai_award_video.mp4" type="video/webm">
+                        Your browser does not support the video tag.
+                    </video>
                     <figcaption>AI Certification graduation day and Top Achiever award from the Samsung Innovation Campus.Happy to receive the award as I was also the class representative.</figcaption>
                 </figure>
             </div>
@@ -73,19 +73,19 @@
             <p>My role as a <strong>Class Representative</strong> for both my AI course and Computer Systems Engineering program allowed me to develop strong leadership and communication skills, complementing my technical expertise.</p>
             <div class="media-gallery">
                 <figure>
-                    <video controls muted playsinline poster="{{ url_for('static', filename='images/My_strory_at_SIC.mp4') }}">
-                    <source src="{{ url_for('static', filename='images/My_strory_at_SIC.mp4') }}" type="video/mp4">
-                    <source src="{{ url_for('static', filename='images/My_strory_at_SIC.mp4') }}" type="video/webm">
-                    Your browser does not support the video tag.
+                    <video controls muted playsinline poster="../static/images/My_strory_at_SIC.mp4">
+                        <source src="../static/images/My_strory_at_SIC.mp4" type="video/mp4">
+                        <source src="../static/images/My_strory_at_SIC.mp4" type="video/webm">
+                        Your browser does not support the video tag.
                     </video>
                     <figcaption>Engaging as a Class Representative, fostering a collaborative learning environment.</figcaption>
                 </figure>
                 <figure>
-                    <video controls muted playsinline poster="{{ url_for('static', filename='images/my_graduations.mp4') }}">
-                    <source src="{{ url_for('static', filename='images/my_graduations.mp4') }}" type="video/mp4">
-                    <source src="{{ url_for('static', filename='images/my_graduations.mp4') }}" type="video/webm">
-                    Your browser does not support the video tag.
-                </video>
+                    <video controls muted playsinline poster="../static/images/my_graduations.mp4">
+                        <source src="../static/images/my_graduations.mp4" type="video/mp4">
+                        <source src="../static/images/my_graduations.mp4" type="video/webm">
+                        Your browser does not support the video tag.
+                    </video>
                     <figcaption>My graduation collections from Diploma in Computer Systems Engineering, Coding & Programming and AI.</figcaption>
                 </figure>
             </div>
@@ -96,14 +96,14 @@
             <p>My professional journey includes valuable practical experience. I dedicated an internship as an <strong>IT Technician at Global IT Systems</strong>, gaining foundational insights into IT support. Currently, I'm contributing as an <strong>IT Support & Systems Engineer at OnePower Lesotho</strong>, where I apply my skills to real-world challenges in a dynamic environment.</p>
             <div class="media-gallery">
                 <figure>
-                    <img src="{{ url_for('static', filename='images/IT Technician.jpg') }}" alt="Hlomohang performing IT support tasks at Global IT Systems">
+                    <img src="../static/images/IT Technician.jpg" alt="Hlomohang performing IT support tasks at Global IT Systems">
                     <figcaption>A snapshot from my time as an IT Technician at Global IT Systems.</figcaption>
                 </figure>
                 <figure>
-                    <video controls muted playsinline poster="{{ url_for('static', filename='images/1pwr.mp4') }}">
-                    <source src="{{ url_for('static', filename='images/1pwr.mp4') }}" type="video/mp4">
-                    <source src="{{ url_for('static', filename='images/1pwr.mp4') }}" type="video/webm">
-                    Your browser does not support the video tag.
+                    <video controls muted playsinline poster="../static/images/1pwr.mp4">
+                        <source src="../static/images/1pwr.mp4" type="video/mp4">
+                        <source src="../static/images/1pwr.mp4" type="video/webm">
+                        Your browser does not support the video tag.
                     </video>
                     <figcaption>Contributing to IT Support and Software Development at OnePower Lesotho.</figcaption>
                 </figure> 
@@ -119,15 +119,15 @@
             <h3>Hlomohang Sethuntsa</h3>
             <p>Dedicated to crafting intuitive digital experiences and building scalable IT solutions. Let's connect!</p>
             <h4>Download My CV</h4>
-            <a href="{{ url_for('static', filename='images/cv/Hlomohang_Sethuntsa_cv.pdf') }}" target="_blank" class="download-cv-link">Download CV</a>
+            <a href="../static/images/cv/Hlomohang_Sethuntsa_cv.pdf" target="_blank" class="download-cv-link">Download CV</a>
         </div>
         <div class="footer-section footer-links">
             <h3>Quick Links</h3>
             <ul>
-                <li><a href="{{ url_for('about') }}">About Me</a></li>
-                <li><a href="{{ url_for('skills') }}">My Skills</a></li>
-                <li><a href="{{ url_for('projects') }}">My Projects</a></li>
-                <li><a href="{{ url_for('contact') }}">Contact Me</a></li>
+                <li><a href="about.html">About Me</a></li>
+                <li><a href="skills.html">My Skills</a></li>
+                <li><a href="projects.html">My Projects</a></li>
+                <li><a href="contact.html">Contact Me</a></li>
             </ul>
         </div>
         <div class="footer-section footer-social">
