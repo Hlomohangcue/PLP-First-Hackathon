@@ -72,9 +72,11 @@ def submit_form():
         return jsonify({'message': 'Form submitted successfully!'}), 200
 
     except mysql.connector.Error as err:
+        # This will now provide a more specific error message from the database
         return jsonify({'error': f"Database error: {err}"}), 500
     except Exception as e:
-        return jsonify({'error': f"An error occurred: {e}"}), 500
+        # This is a generic fallback, but the database error is more likely
+        return jsonify({'error': f"An unexpected error occurred: {e}"}), 500
 
 if __name__ == '__main__':
     app.run(debug=True)
