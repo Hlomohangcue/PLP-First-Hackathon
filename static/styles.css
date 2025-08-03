@@ -1336,6 +1336,20 @@ footer {
     min-height: 120px; /* Ensure minimum height */
 }
 
+/* Default styles for all modes */
+.contact-info-text {
+  /* This will be the color in light mode */
+  color: black;
+}
+
+/* Styles for dark mode */
+@media (prefers-color-scheme: dark) {
+  .contact-info-text {
+    /* This will be the color in dark mode */
+    color: white;
+  }
+}
+
 .send-button {
     display: block;
     width: 100%;

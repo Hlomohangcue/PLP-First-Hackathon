@@ -48,7 +48,7 @@
                         <label for="message">Message:</label>
                         <textarea id="message" name="message" rows="6" required></textarea>
                     </div>
-                    <p>Feel free to contact me directly on WhatsApp:</p>
+                    <p class="contact-info-text">Feel free to contact me directly on WhatsApp:</p>
                     <a href="https://wa.me/26662274073?text=Hello,%20I%20would%20like%20to%20get%20in%20touch.">
                     <button type="button" class="send-button">Send Message on WhatsApp</button>
                     </a>
@@ -111,51 +111,5 @@
     </div>
 </footer>
 
-     <script>
-        document.getElementById('contactForm').addEventListener('submit', function(event) {
-            // Prevent the form from submitting in the traditional way
-            event.preventDefault(); 
-
-            // Get form data and confirmation message div
-            const form = event.target;
-            const formData = new FormData(form);
-            const confirmationMessage = document.getElementById('confirmationMessage');
-
-            // Show a loading state or disable the button to prevent multiple submissions
-            const sendButton = document.querySelector('.send-button');
-            sendButton.disabled = true;
-            sendButton.textContent = 'Sending...';
-
-            // Send form data to the Flask backend
-            fetch('/submit_form', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok.');
-                }
-                return response.json();
-            })
-            .then(data => {
-                if (data.message) {
-                    // On success, hide the form and show the confirmation message
-                    form.style.display = 'none';
-                    confirmationMessage.style.display = 'block';
-                } else {
-                    // Handle server-side errors
-                    alert(data.error || 'An unknown error occurred.');
-                    sendButton.disabled = false;
-                    sendButton.textContent = 'Send Message';
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('An error occurred. Please try again.');
-                sendButton.disabled = false;
-                sendButton.textContent = 'Send Message';
-            });
-        });
-    </script>
 </body>
 </html>
