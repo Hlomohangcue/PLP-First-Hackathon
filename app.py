@@ -7,9 +7,9 @@ app = Flask(__name__)
 # Configure your MySQL database connection
 db_config = {
     'host': os.environ.get('DB_HOST'),
-    'user': os.environ.get('Hlomohang'),
-    'password': os.environ('admin1234'),
-    'database': os.environ('portfolio_db')
+    'user': os.environ.get('DB_USER'),  # Or 'Hlomohang' if that's the key
+    'password': os.environ.get('DB_PASSWORD'), # Make sure to set a DB_PASSWORD env var
+    'database': os.environ.get('DB_DATABASE') # Make sure to set a DB_DATABASE env var
 }
 
 # Route for the homepage
