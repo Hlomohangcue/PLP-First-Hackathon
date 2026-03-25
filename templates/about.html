@@ -1,94 +1,485 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About | Hlomohang Sethuntsa</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../static/styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About — Hlomohang Sethunts'a</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --surface: #111118;
+      --border: #1e1e2e;
+      --accent: #00e5a0;
+      --accent2: #7c6af7;
+      --text: #e8e8f0;
+      --muted: #6b6b80;
+      --tag-bg: #1a1a28;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Mono', monospace;
+      font-size: 14px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ── Grid noise texture overlay ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(255,255,255,0.013) 40px, rgba(255,255,255,0.013) 41px),
+        repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(255,255,255,0.013) 40px, rgba(255,255,255,0.013) 41px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 80px 32px 120px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── Header ── */
+    .header {
+      margin-bottom: 72px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.7s ease forwards;
+    }
+
+    .header-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .header-label::before {
+      content: '';
+      display: inline-block;
+      width: 28px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(36px, 6vw, 64px);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+
+    h1 span {
+      color: var(--accent);
+    }
+
+    .role-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 18px;
+      background: var(--tag-bg);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      padding: 8px 16px;
+      font-size: 12px;
+      letter-spacing: 0.04em;
+      color: var(--muted);
+    }
+
+    .role-badge .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    /* ── Bio ── */
+    .bio-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 72px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.7s ease 0.15s forwards;
+    }
+
+    .bio-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .bio-card::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), transparent);
+    }
+
+    .bio-card p {
+      color: #b0b0c8;
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    .bio-card .card-label {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .highlight {
+      color: var(--accent);
+      font-style: italic;
+    }
+
+    /* ── Section headings ── */
+    .section-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ── Timeline ── */
+    .timeline-section {
+      margin-bottom: 72px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.7s ease 0.3s forwards;
+    }
+
+    .timeline {
+      position: relative;
+      padding-left: 24px;
+      border-left: 1px solid var(--border);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 32px;
+      padding-left: 28px;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -29px;
+      top: 6px;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--bg);
+      border: 1.5px solid var(--accent);
+    }
+
+    .timeline-item:last-child { margin-bottom: 0; }
+
+    .timeline-item .year {
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .timeline-item .title {
+      font-family: 'Syne', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 2px;
+    }
+
+    .timeline-item .org {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .timeline-item .desc {
+      font-size: 12.5px;
+      color: #8888a0;
+      line-height: 1.7;
+    }
+
+    .badge {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 3px 10px;
+      background: rgba(0, 229, 160, 0.08);
+      border: 1px solid rgba(0, 229, 160, 0.25);
+      color: var(--accent);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    /* ── Skills Grid ── */
+    .skills-section {
+      margin-bottom: 72px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.7s ease 0.45s forwards;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 10px;
+    }
+
+    .skill-tag {
+      background: var(--tag-bg);
+      border: 1px solid var(--border);
+      padding: 10px 14px;
+      font-size: 11.5px;
+      color: #9090b0;
+      letter-spacing: 0.04em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: border-color 0.2s, color 0.2s;
+      cursor: default;
+    }
+
+    .skill-tag:hover {
+      border-color: var(--accent2);
+      color: var(--text);
+    }
+
+    .skill-tag::before {
+      content: '▸';
+      color: var(--accent2);
+      font-size: 10px;
+    }
+
+    /* ── CTA ── */
+    .cta-section {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.7s ease 0.6s forwards;
+    }
+
+    .cta-block {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-top: 2px solid var(--accent2);
+      padding: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .cta-block p {
+      font-size: 13px;
+      color: var(--muted);
+      max-width: 460px;
+      line-height: 1.7;
+    }
+
+    .cta-block p strong {
+      color: var(--text);
+      font-style: normal;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 24px;
+      background: transparent;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: background 0.2s, color 0.2s;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .btn:hover {
+      background: var(--accent);
+      color: var(--bg);
+    }
+
+    .btn svg { transition: transform 0.2s; }
+    .btn:hover svg { transform: translateX(3px); }
+
+    /* ── Animations ── */
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.75); }
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      .bio-section { grid-template-columns: 1fr; }
+      .cta-block { flex-direction: column; align-items: flex-start; }
+      h1 { font-size: 36px; }
+    }
+  </style>
 </head>
 <body>
-    <header class="sticky-navbar">
-    <nav class="navbar">
-        <div class="logo">
-            <a href="index.html">
-                <img src="../static/images/logo.png" alt="Hlomohang Sethuntsa Logo" class="logo-image">
-            </a>
-        </div>
-        <input type="checkbox" id="menu-toggle" class="menu-toggle">
-        <label for="menu-toggle" class="menu-icon">☰</label>
-        <ul class="menu horizontal">
-            <li><a href="index.html" class="active">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="skills.html">Skills</a></li>
-            <li><a href="education.html">Education</a></li>
-            <li><a href="projects.html">Projects</a></li>
-            <li><a href="experience.html">Experience</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
-    </nav>
-</header>
+  <div class="container">
 
-    <main class="about-section">
-    <h1>About Me</h1>
+    <!-- Header -->
+    <header class="header">
+      <div class="header-label">About Me</div>
+      <h1>Hlomohang<br><span>Sethunts'a</span></h1>
+      <div class="role-badge">
+        <span class="dot"></span>
+        IT &amp; Systems Engineer — OnePower Lesotho &nbsp;·&nbsp; Open to new roles
+      </div>
+    </header>
 
-    <section class="about-intro">
-        <div class="about-content">
-            <img src="../static/images/profile.jpg" alt="Hlomohang Sethuntsa Professional Portrait" class="profile-image">
-            <div class="bio">
-                <p>I'm <strong>Hlomohang Sethunts'a</strong>, with a <strong>Diploma in Computer Systems Engineering</strong> from <strong>Lerotholi Polytechnic</strong>.</p>
-                <p>I completed certifications in <strong>Coding & Programming (Python)</strong> and <strong>Artificial Intelligence</strong>—where I was recognized as the <strong>Top Achiever</strong> and awarded a <strong>Samsung Galaxy S24 Ultra</strong> and <strong>Galaxy Fit3</strong>.</p>
-                <p>I further enhanced my skills by completing an <strong>AI Literacy Certification</strong> from <strong>Power Learn Africa</strong> and a <strong>16-week Software Development Certification</strong> under <strong>Power Learn Project</strong> covering <strong>Python</strong>, <strong>Database Design & Programming with SQL</strong>, <strong>Software Engineering Essentials</strong>, and <strong>Web Technologies</strong> with specialization in <strong>AI for Software Engineering</strong>.</p>
-                <p>I’m currently working as an <strong>IT & Systems Engineer</strong> at <strong>OnePower Lesotho</strong>, and I’m actively looking for <strong>Software Engineering</strong> and <strong>AI Engineer</strong> roles.</p>
-            </div>
-        </div>
+    <!-- Bio Cards -->
+    <section class="bio-section">
+      <div class="bio-card">
+        <div class="card-label">Background</div>
+        <p>
+          I hold a <span class="highlight">Diploma in Computer Systems Engineering</span> from Lerotholi Polytechnic and have built a strong foundation across hardware, software, and intelligent systems — bridging physical infrastructure with modern software engineering.
+        </p>
+      </div>
+      <div class="bio-card">
+        <div class="card-label">What drives me</div>
+        <p>
+          I'm passionate about building systems that think — combining software engineering discipline with AI to create tools that are practical, efficient, and impactful. I'm actively seeking <span class="highlight">Software Engineering</span> and <span class="highlight">AI Engineer</span> roles where I can push that boundary.
+        </p>
+      </div>
     </section>
 
-    <p><strong>Diploma in Computer Systems Engineering</strong> — Lerotholi Polytechnic — Completed.</p>
-    <p><strong>Coding &amp; Programming (Python)</strong> — Samsung Innovation Campus — Certification completed.</p>
-    <p><strong>Artificial Intelligence (Top Achiever)</strong> — Samsung Innovation Campus — Top Achiever award: Samsung Galaxy S24 Ultra &amp; Galaxy Fit3.</p>
-    <p><strong>AI Literacy Certification</strong> — Power Learn Africa — Skill development completed.</p>
-    <p><strong>16-Week Software Development Certification</strong> — Power Learn Project (Python, SQL, Software Engineering, Web Technologies - AI focus) — Completed.</p>
-    <p><strong>IT &amp; Systems Engineer</strong> — OnePower Lesotho — Current role.</p>
-    <p><strong>Open to Opportunities</strong> — Software Engineering &amp; AI Engineer roles — Actively seeking.</p>
-</main>
+    <!-- Education & Certifications Timeline -->
+    <section class="timeline-section">
+      <h2 class="section-title">Education &amp; Certifications</h2>
+      <div class="timeline">
 
-   <footer>
-    <div class="footer-content">
-        <div class="footer-section footer-about">
-            <h3>Hlomohang Sethuntsa</h3>
-            <p>Dedicated to crafting intuitive digital experiences and building scalable IT solutions. Let's connect!</p>
-            <h4>Download My CV</h4>
-            <a href="../static/images/cv/Hlomohang_Sethuntsa_cv.pdf" target="_blank" class="download-cv-link">Download CV</a>
+        <div class="timeline-item">
+          <div class="year">Lerotholi Polytechnic</div>
+          <div class="title">Diploma in Computer Systems Engineering</div>
+          <div class="org">Lerotholi Polytechnic</div>
+          <div class="desc">Core engineering training in computer systems, hardware, networking, and systems design.</div>
+          <span class="badge">✓ Completed</span>
         </div>
-        <div class="footer-section footer-links">
-            <h3>Quick Links</h3>
-            <ul>
-                <li><a href="about.html">About Me</a></li>
-                <li><a href="skills.html">My Skills</a></li>
-                <li><a href="projects.html">My Projects</a></li>
-                <li><a href="contact.html">Contact Me</a></li>
-            </ul>
-        </div>
-        <div class="footer-section footer-social">
-            <h3>Connect</h3>
-            <div class="social-icon-contact">
-                <a href="mailto:hlomohangsethuntsa3@gmail.com" target="_blank"><i class="fas fa-envelope"></i></a>
-                <a href="https://github.com/HlomohangCue" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/hlomohang-sethunts-a-876401251/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank"><i class="fab fa-linkedin"></i></a>
-                <a href="https://www.instagram.com/hlomohangcue?igsh=dTUycXlhajRkbDFs" class="social-icon" target="_blank"><i class="fab fa-instagram"></i></a>
-            </div>
-            <p class="contact-email">Email: <a href="mailto:hlomohangsethuntsa3@gmail.com">hlomohangsethuntsa3@gmail.com</a></p>
-        </div>
-    </div>
-    <div class="footer-bottom">
-            <p>© 2026 Hlomohang Sethuntsa. All rights reserved.</p>
-    </div>
-</footer>
 
-     <script defer src="/_vercel/insights/script.js"></script>
+        <div class="timeline-item">
+          <div class="year">Samsung Innovation Campus</div>
+          <div class="title">Coding &amp; Programming — Python</div>
+          <div class="org">Samsung Innovation Campus</div>
+          <div class="desc">Hands-on programming certification with a focus on Python fundamentals and application development.</div>
+          <span class="badge">✓ Certified</span>
+        </div>
+
+        <div class="timeline-item">
+          <div class="year">Samsung Innovation Campus</div>
+          <div class="title">Artificial Intelligence — Top Achiever 🏆</div>
+          <div class="org">Samsung Innovation Campus</div>
+          <div class="desc">Recognised as the <strong style="color:var(--accent)">Top Achiever</strong> in the cohort. Awarded a Samsung Galaxy S24 Ultra and Galaxy Fit3 for outstanding performance.</div>
+          <span class="badge">⭐ Top Achiever Award</span>
+        </div>
+
+        <div class="timeline-item">
+          <div class="year">Power Learn Africa</div>
+          <div class="title">AI Literacy Certification</div>
+          <div class="org">Power Learn Africa</div>
+          <div class="desc">Developed foundational and applied AI literacy skills across real-world problem domains.</div>
+          <span class="badge">✓ Certified</span>
+        </div>
+
+        <div class="timeline-item">
+          <div class="year">Power Learn Project</div>
+          <div class="title">16-Week Software Development Certification</div>
+          <div class="org">Power Learn Project</div>
+          <div class="desc">Intensive program covering Python, Database Design &amp; SQL, Software Engineering Essentials, and Web Technologies — with specialisation in AI for Software Engineering.</div>
+          <span class="badge">✓ Completed</span>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section class="skills-section">
+      <h2 class="section-title">Technical Stack</h2>
+      <div class="skills-grid">
+        <div class="skill-tag">Python</div>
+        <div class="skill-tag">Artificial Intelligence</div>
+        <div class="skill-tag">Machine Learning</div>
+        <div class="skill-tag">SQL &amp; Databases</div>
+        <div class="skill-tag">Software Engineering</div>
+        <div class="skill-tag">Web Technologies</div>
+        <div class="skill-tag">Systems Engineering</div>
+        <div class="skill-tag">IT Infrastructure</div>
+        <div class="skill-tag">AI for Dev</div>
+        <div class="skill-tag">Network Systems</div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+      <div class="cta-block">
+        <p>
+          <strong>Available for new opportunities.</strong><br>
+          I'm actively looking for roles in <strong>Software Engineering</strong> and <strong>AI Engineering</strong>. If you're building something meaningful, let's connect.
+        </p>
+        <a href="mailto:" class="btn">
+          Get in touch
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+          </svg>
+        </a>
+      </div>
+    </section>
+
+  </div>
 </body>
 </html>
